@@ -19,7 +19,7 @@ oven_temp = st.number_input("Oventemperatuur (°C)", 150, 550, 480)
 
 st.header("🧪 Methode & Gist")
 methode = st.radio("Kies Methode", ["Direct deeg", "Biga"])
-gist_type = st.radio("Gist Type", ["Instant (IDY)", "Vers"])
+gist_type = st.radio("Type gist", ["Instant (IDY)", "Vers"])
 
 # --- RIJSSCHEMA ---
 st.header("🕒 Planning & Temperatuur")
