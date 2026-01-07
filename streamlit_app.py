@@ -30,11 +30,9 @@ with st.expander("🎓 Expert-tips & Theorie"):
     st.divider()
     
     st.write("**5. De Kickstart:**")
-    if methode == "Direct Deeg":
-        st.write("Laat het deeg na het kneden 1 uur op kamertemperatuur rusten. Dit geeft de gist een 'kickstart' voordat het de koelkast in gaat.")
-    else:
-        st.write("Laat de Biga (Stap 1) 1 tot 2 uur op kamertemperatuur staan voordat deze de koelkast in gaat. Na het mixen in Stap 2 kan het deeg direct koud staan.")
-    st.divider()
+    st.write("**3. De Kickstart:**")
+    st.write("- **Direct Deeg:** Laat het deeg na het kneden 1 uur op kamertemperatuur rusten voordat het de koelkast in gaat.")
+    st.write("- **Biga:** Laat de Biga (Stap 1) 1 tot 2 uur op kamertemperatuur staan. Na het mixen (Stap 2) kan het deeg direct de koelkast in.")
     
     st.write("**6. Windowpane Test:**")
     st.write("Een lange fermentatie maakt het deeg elastisch en stretchbaar. Dat heb je nodig om het pizzadeeg goed te kunnen vormen. Je kunt je deeg testen: trek het zo dun uit dat je er bijna doorheen kunt kijken zonder dat het scheurt.")
