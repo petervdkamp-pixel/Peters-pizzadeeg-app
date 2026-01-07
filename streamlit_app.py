@@ -48,7 +48,7 @@ with st.expander("🎓 Expert-tips & Theorie"):
 st.header("📦 Basisinstellingen")
 aantal = st.number_input("Aantal deegballen", min_value=1, value=6)
 gewicht = st.number_input("Gewicht per bol (gram)", min_value=100, value=250)
-hydro_totaal = st.slider("Hydratatie (%)", 50, 80, 65)
+hydro_totaal = st.slider("Hydratatie (%)", 50, 80, 67)
 zout_perc = st.slider("Zout (%)", 1.0, 4.0, 2.5, 0.1)
 suiker_perc = st.slider("Suiker (%)", 0.0, 3.0, 0.0, 0.5)
 olijfolie_perc = st.slider("Olijfolie (%)", 0.0, 5.0, 0.0, 0.5)
