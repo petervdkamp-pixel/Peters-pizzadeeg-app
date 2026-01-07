@@ -161,3 +161,54 @@ else:
         if olijfolie_totaal > 0: st.write(f"**Olijfolie:** {olijfolie_totaal:.1f}g")
 
 st.info(f"Totaal deeggewicht: {totaal_gewicht:.0f}g (incl. {waste_perc}% waste)")
+
+# --- RECEPT TEKST OPBOUWEN ---
+if methode == "Biga":
+    recept_export = f"""🍕 JOUW PIZZA RECEPT (Biga Methode)
+-----------------------------------------
+Aantal bollen: {aantal} x {gewicht}g
+Hydratatie: {hydro_totaal}%
+Totale rijstijd: {totale_uren} uur
+
+STAP 1: DE BIGA (Voordeeg)
+• Bloem: {bloem_biga:.0f}g
+• Water: {water_biga:.0f}g
+• Gist: {gist_totaal:.2f}g (Direct in de biga)
+
+STAP 2: HET HOOFDDEEG
+• Restant Bloem: {bloem_deeg:.0f}g
+• Restant Water: {water_deeg:.0f}g
+• Zout: {zout_totaal:.1f}g
+{f'• Suiker: {suiker_totaal:.1f}g' if suiker_totaal > 0 else ''}
+{f'• Olijfolie: {olijfolie_totaal:.1f}g' if olijfolie_totaal > 0 else ''}
+
+PLANNING:
+• Biga: {tijd_biga_ct}u koelkast / {tijd_biga_rt}u kamer
+• Deeg: {tijd_deeg_ct}u koelkast / {tijd_deeg_rt}u kamer
+-----------------------------------------
+Gemaakt met Peter's Pizza Calculator"""
+else:
+    recept_export = f"""🍕 JOUW PIZZA RECEPT (Direct Deeg)
+-----------------------------------------
+Aantal bollen: {aantal} x {gewicht}g
+Hydratatie: {hydro_totaal}%
+Totale rijstijd: {totale_uren} uur
+
+INGREDIËNTEN:
+• Bloem: {bloem_totaal:.0f}g
+• Water: {water_totaal:.0f}g
+• Zout: {zout_totaal:.1f}g
+• Gist: {gist_totaal:.2f}g
+{f'• Suiker: {suiker_totaal:.1f}g' if suiker_totaal > 0 else ''}
+{f'• Olijfolie: {olijfolie_totaal:.1f}g' if olijfolie_totaal > 0 else ''}
+
+PLANNING:
+• Koelkast: {totale_tijd_ct} uur
+• Kamertemperatuur: {totale_tijd_rt} uur
+-----------------------------------------
+Gemaakt met Peter's Pizza Calculator"""
+
+# De kopieerknop
+if st.button("📋 Kopieer recept naar klembord"):
+    st.copy_to_clipboard(recept_export)
+    st.toast("Recept gekopieerd! Plak het in WhatsApp of Mail.")
