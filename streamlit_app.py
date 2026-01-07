@@ -107,6 +107,12 @@ st.header("📋 Jouw Recept")
 if totale_uren < 24:
     st.error(f"⚠️ **Waarschuwing:** Je totale rijstijd is slechts {totale_uren} uur. Wij adviseren minimaal 24 uur voor optimale smaak en verteerbaarheid (zie Expert-tips).")
     
+# Waarschuwing voor W-waarde op basis van tijd
+if totale_uren > 48:
+    st.warning(f"⚠️ **Bloem Advies:** Voor een totale rijstijd van {totale_uren} uur heb je een sterke bloem nodig (minimaal W320).")
+elif totale_uren >= 24:
+    st.info("💡 **Bloem Advies:** Voor deze rijstijd is een medium-sterke bloem (W260 - W300) ideaal.")
+    
 # Contextuele adviezen
 if oven_temp >= 450:
     if hydro_totaal < 65:
