@@ -1,10 +1,10 @@
 import streamlit as st
 
 # --- CONFIGURATIE ---
-st.set_page_config(page_title="Pizza Expert Calculator", page_icon="🍕", layout="centered")
+st.set_page_config(page_title="Pizza-expert calculator", page_icon="🍕", layout="centered")
 
-st.title("🍕 Pizza Expert Calculator")
-st.markdown("De ultieme tool voor Direct Deeg en Biga recepten.")
+st.title("🍕 Pizza-expert calculator")
+st.markdown("De ultieme tool voor direct deeg en biga-recepten.")
 
 # --- SIDEBAR: INPUTS ---
 st.sidebar.header("📦 Basis Instellingen")
@@ -18,16 +18,16 @@ waste_perc = st.sidebar.number_input("Waste factor (% extra deeg)", 0, 10, 2)
 oven_temp = st.sidebar.number_input("Oventemperatuur (°C)", 150, 550, 480)
 
 st.sidebar.header("🧪 Methode & Gist")
-methode = st.sidebar.radio("Kies Methode", ["Direct Deeg", "Biga"])
+methode = st.sidebar.radio("Kies Methode", ["Direct deeg", "Biga"])
 gist_type = st.sidebar.radio("Gist Type", ["Instant (IDY)", "Vers"])
 
-# --- RIJS SCHEMA ---
+# --- RIJSSCHEMA ---
 st.header("🕒 Planning & Temperatuur")
 col1, col2 = st.columns(2)
 with col1:
-    temp_ct = st.number_input("Temp Koelkast (°C)", 2, 10, 4)
+    temp_ct = st.number_input("Koelkasttemperatuur (°C)", 2, 10, 4)
 with col2:
-    temp_rt = st.number_input("Temp Kamer (°C)", 15, 30, 20)
+    temp_rt = st.number_input("Kamertemperatuur (°C)", 15, 30, 20)
 
 if methode == "Biga":
     biga_perc = st.slider("Biga Percentage (%)", 10, 100, 50)
@@ -37,12 +37,12 @@ if methode == "Biga":
     
     st.subheader("Fase 2: Na het mixen")
     tijd_deeg_ct = st.number_input("Uren deeg in koelkast", 0, 72, 18)
-    tijd_deeg_rt = st.number_input("Uren deeg op kamer", 0, 24, 6)
+    tijd_deeg_rt = st.number_input("Uren deeg op kamertemperatuur", 0, 24, 6)
     
     totale_tijd_ct = tijd_biga_ct + tijd_deeg_ct
     totale_tijd_rt = tijd_biga_rt + tijd_deeg_rt
 else:
-    st.subheader("Direct Deeg Planning")
+    st.subheader("Planning direct deeg")
     totale_tijd_ct = st.number_input("Totaal uren in koelkast", 0, 100, 24)
     totale_tijd_rt = st.number_input("Totaal uren op kamer", 0, 48, 6)
 
@@ -71,7 +71,7 @@ if oven_temp >= 450:
     if suiker_perc > 0:
         st.error("⚠️ **Suiker Waarschuwing:** Bij 450°C+ verbrandt suiker te snel. Laat suiker liever weg.")
     if olijfolie_perc > 0:
-        st.warning("⚠️ **Olie Tip:** Olie kan gaan roken bij 450°C+. Wees zeer matig.")
+        st.warning("⚠️ **Olie Tip:** Olie kan gaan roken bij 450°C+. Wees zeer matig en laat liever weg.")
 elif oven_temp < 300:
     if hydro_totaal > 64:
         st.warning("⚠️ **Bodem Tip:** Bij lage temp kan >64% water zorgen voor een zompige bodem.")
@@ -107,16 +107,26 @@ else:
 
 st.info(f"Totaal deeggewicht: {totaal_gewicht:.0f}g (incl. {waste_perc}% waste)")
 
-# EXPERT TIPS SECTIE
-with st.expander("🎓 Expert Tips voor dit Recept"):
-    st.write("**1. De Kickstart:**")
+# EXPERTTIPS SECTIE
+with st.expander("🎓 Expert Tips & Theorie"):
+    st.write("**1. Waarom Biga?**")
+    st.write("Een Biga is een 'droog' voordeeg (45% hydratatie). In tegenstelling tot een direct deeg, waarbij je alles in één keer mengt, geeft een biga je pizza:")
+    st.write("- **Meer aroma:** Diepe, complexe smaken die je met een kort proces nooit haalt.")
+    st.write("- **Superieure structuur:** Een veel luchtigere en krokantere rand (*cornicione*).")
+    st.write("- **Verteerbaarheid:** De lange fermentatie breekt complexe zetmelen alvast af.")
+
+    st.write("**2. De ideale fermentatietijd:**")
+    st.write("Hoewel je na 8 uur al een pizza kunt bakken, adviseren wij **minimaal 24 uur** (en idealiter 48 uur) totale rijstijd. Tijd is een ingrediënt: het zorgt ervoor dat het deeg lichter op de maag ligt en de gluten optimaal ontspannen voor het stretchen.")
+
+    st.write("**3. De Kickstart:**")
     if methode == "Direct Deeg":
         st.write("Laat het deeg na het kneden 1 uur op kamertemperatuur rusten. Dit geeft de gist een 'kickstart' voordat het de koelkast in gaat.")
     else:
         st.write("Laat de Biga (Stap 1) 1 tot 2 uur op kamertemperatuur staan voordat deze de koelkast in gaat. Na het mixen in Stap 2 kan het deeg direct koud staan.")
     
-    st.write("**2. Windowpane Test:**")
-    st.write("Een lange fermentatie maakt het deeg elastisch. Test je deeg: je moet het zo dun kunnen uitrekken dat je er bijna doorheen kunt kijken zonder dat het scheurt.")
+    st.write("**4. Windowpane Test:**")
+    st.write("Een lange fermentatie maakt het deeg elastisch en stretchbaar. Dat heb je nodig om het pizzadeeg goed te kunnen vormen. Je kunt je deeg testen: trek het zo dun uit dat je er bijna doorheen kunt kijken zonder dat het scheurt.")
     
-    st.write("**3. Biga Mengen:**")
-    st.write("Heeft je machine moeite met de Biga? Snijd de Biga in kleine stukjes en los deze eerst op in het water van Stap 2 voordat je de rest van de bloem toevoegt.")
+    if suiker_perc > 0:
+        st.write("**5. Suiker & Gist:**")
+        st.write("De toegevoegde suiker helpt vooral bij de kleuring. Het effect op de rijskracht is bij deze percentages verwaarloosbaar.")
