@@ -163,7 +163,7 @@ else:
 st.info(f"Totaal deeggewicht: {totaal_gewicht:.0f}g (incl. {waste_perc}% waste)")
 
 # --- UITKLAPBAAR KOPIEERBLOK ONDERAAN ---
-with st.expander("📲 Klik hier om het recept te kopiëren"):
+with st.expander("📲 Klik hier om het recept eenvoudig te kopiëren naar bijv. Whatsapp of een notitieblok"):
     
     # We berekenen de waarden hier ter plekke zodat de tekst altijd klopt
     if methode == "Biga":
