@@ -12,21 +12,18 @@ with st.expander("🎓 Expert-tips & Theorie"):
     st.write("De hoeveelheid water in je deeg (hydratatie, weergegeven in percentage van de bloem (100%)) is direct gekoppeld aan hoe heet je bakt:")
     st.write("- **Hete oven (450°C+):** Je bakt heel kort (60-90 sec). Een hoge hydratatie (65-70%) is nodig zodat de pizza niet uitdroogt.")
     st.write("- **Huishoudoven (max 300°C):** Je bakt langer (8-12 min). Een lagere hydratatie (max 62%) voorkomt dat je bodem slap of zompig blijft. Je pizza wordt iets krokanter.")
-    st.divider()
-        
+    st.divider()    
     st.write("**2. Wat is direct deeg?**")
     st.write("Bij direct deeg meng je alle ingrediënten (bloem, water, gist en zout) in één keer. Dit is de basismethode en het meest eenvoudig.")
     st.write("- **Resultaat:** Een klassieke pizza met een egale structuur. De smaak komt hier vooral uit de lange rijs- of fermentatietijd in de koelkast.")
     st.write("- **Tips voor het kneedproces:** Kneed eerst de bloem, het water en de gist. Als het deeg een egale consistentie heeft, voeg dan in de laatste minuten van het kneden de gist toe.")
     st.divider()
-
     st.write("**3. Wat is biga?**")
     st.write("Biga is een 'droog' voordeeg dat je ongeveer 24 uur van tevoren maakt. Pas daarna meng je het met de rest van de ingrediënten.")
     st.write("- **Meer aroma:** Diepere, complexere smaken (notig en licht zurig).")
     st.write("- **Superieure structuur:** Een veel luchtigere en krokantere rand (*cornicione*) met grotere luchtbellen.")
     st.write("- **Verteerbaarheid:** De enzymen hebben meer tijd om het zetmeel en de gluten af te breken.")
     st.divider()
-    
     st.write("**4. De juiste bloem (Tipo 00 & W-waarde):**")
     st.write("Voor een echte Napolitaanse pizza is **Tipo 00 bloem** vereist. Dit is de zuiverste maling voor een elastisch en stretchbaar deeg. Het kan bovendien meer water opnemen, zonder dat het plakkerig wordt.")
     st.write("De **W-waarde** (bakkracht) bepaalt hoe lang je deeg kan rijpen/fermenteren:")
@@ -34,20 +31,16 @@ with st.expander("🎓 Expert-tips & Theorie"):
     st.write("- **W320 - W400:** Nodig voor extreem lange rijstijden (**72+ uur**) of een zeer hoge hydratatie (70%+).")
     st.write("Een hogere W-waarde betekent een sterker 'skelet' dat de gassen langer kan vasthouden. Dit helpt met het bereiken van een luchtige korst.")
     st.divider()
-    
     st.write("**5. De ideale fermentatietijd:**")
     st.write("Hoewel je na 8 uur rijstijd al een pizza kunt bakken, adviseren wij **minimaal 24 uur** (en idealiter 48 uur of langer) totale rijstijd. Tijd is een ingrediënt: het zorgt ervoor dat het deeg lichter op de maag ligt en de gluten optimaal ontspannen voor het stretchen. Bij een korte rijstijd <24 uur, heb je meer kans dat het deeg scheurt.")
     st.divider()
-    
     st.write("**6. De Kickstart:**")
     st.write("- **Direct Deeg:** Laat het deeg na het kneden 1 uur op kamertemperatuur rusten voordat het de koelkast in gaat.")
     st.write("- **Biga:** Laat de Biga (Stap 1) 1 tot 2 uur op kamertemperatuur staan. Na het mixen (Stap 2) kan het deeg direct de koelkast in.")
     st.divider()
-    
     st.write("**7. Windowpane Test:**")
     st.write("Een lange fermentatie maakt het deeg elastisch en stretchbaar. Dat heb je nodig om het pizzadeeg goed te kunnen vormen. Je kunt je deeg testen: trek het zo dun uit dat je er bijna doorheen kunt kijken zonder dat het scheurt.")
     st.divider()
-    
     st.write("**8. Suiker & Gist:**")
     st.write("Gebruik je suiker (aanbevolen onder 300°C)? Dit helpt vooral bij de kleuring. Het effect op de rijskracht is bij percentages onder de 3% verwaarloosbaar in relatie tot de invloed van tijd en temperatuur.")
 
