@@ -162,19 +162,17 @@ else:
 
 st.info(f"Totaal deeggewicht: {totaal_gewicht:.0f}g (incl. {waste_perc}% waste)")
 
-# --- VOLLEDIG KOPIEERBLOK ONDERAAN ---
-st.divider()
-st.subheader("📲 Recept kopiëren")
-
-# We berekenen de waarden hier ter plekke zodat de tekst altijd klopt
-if methode == "Biga":
-    # Berekening voor de tekst
-    b_biga = bloem_totaal * 0.5
-    w_biga = b_biga * 0.45
-    b_rest = bloem_totaal - b_biga
-    w_rest = water_totaal - w_biga
+# --- UITKLAPBAAR KOPIEERBLOK ONDERAAN ---
+with st.expander("📲 Klik hier om het recept te kopiëren"):
     
-    export_tekst = f"""🍕 PIZZA RECEPT (BIGA)
+    # We berekenen de waarden hier ter plekke zodat de tekst altijd klopt
+    if methode == "Biga":
+        b_biga = bloem_totaal * 0.5
+        w_biga = b_biga * 0.45
+        b_rest = bloem_totaal - b_biga
+        w_rest = water_totaal - w_biga
+        
+        export_tekst = f"""🍕 PIZZA RECEPT (BIGA)
 -----------------------------------------
 Aantal: {aantal} bollen van {gewicht}g
 Hydratatie: {hydro_totaal}%
@@ -192,8 +190,8 @@ STAP 2 (Het Deeg):
 • Zout: {zout_totaal:.1f}g
 • Planning: {tijd_deeg_ct}u koelkast / {tijd_deeg_rt}u kamer
 -----------------------------------------"""
-else:
-    export_tekst = f"""🍕 PIZZA RECEPT (DIRECT)
+    else:
+        export_tekst = f"""🍕 PIZZA RECEPT (DIRECT)
 -----------------------------------------
 Aantal: {aantal} bollen van {gewicht}g
 Hydratatie: {hydro_totaal}%
@@ -210,6 +208,6 @@ PLANNING:
 • Kamertemperatuur: {totale_tijd_rt} uur
 -----------------------------------------"""
 
-# Toon de tekst in een kopieerbaar blok
-st.code(export_tekst, language="text")
-st.caption("Klik op het icoontje rechtsboven om het recept te kopiëren.")
+    # Toon de tekst in een kopieerbaar blok
+    st.code(export_tekst, language="text")
+    st.caption("Klik op het icoontje rechtsboven om het recept te kopiëren.")
