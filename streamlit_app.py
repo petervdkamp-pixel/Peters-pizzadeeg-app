@@ -29,7 +29,7 @@ with st.expander("🎓 Expert-tips & Theorie"):
     st.write("De **W-waarde** (bakkracht) bepaalt hoe lang je deeg kan rijpen/fermenteren:")
     st.write("- **W260 - W300:** Ideaal voor rijstijden tussen de **24 en 48 uur**.")
     st.write("- **W320 - W400:** Nodig voor extreem lange rijstijden (**72+ uur**) of een zeer hoge hydratatie (70%+).")
-    st.write("Een hogere W-waarde betekent een sterker 'skelet' dat de gassen langer kan vasthouden. Dit helpt met het bereiken van een luchtige korst.")
+    st.write("Een hogere W-waarde betekent een sterker 'skelet' dat de gassen langer kan vasthouden. Dit helpt met het bereiken van een luchtige korst. Gebruik je supermarktbloem (vaak W190)? Dan zal het deeg bij lange rijstijden slap worden en scheuren.")
     st.divider()
     st.write("**5. De ideale fermentatietijd:**")
     st.write("Hoewel je na 8 uur rijstijd al een pizza kunt bakken, adviseren wij **minimaal 24 uur** (en idealiter 48 uur of langer) totale rijstijd. Tijd is een ingrediënt: het zorgt ervoor dat het deeg lichter op de maag ligt en de gluten optimaal ontspannen voor het stretchen. Bij een korte rijstijd <24 uur, heb je meer kans dat het deeg scheurt.")
