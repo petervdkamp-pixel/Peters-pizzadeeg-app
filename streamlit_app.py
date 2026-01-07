@@ -1,44 +1,48 @@
 import streamlit as st
 
 # --- CONFIGURATIE ---
-st.set_page_config(page_title="Expert Pizza Calculator", page_icon="🍕")
+st.set_page_config(page_title="Pizza Expert Calculator", page_icon="🍕", layout="centered")
 
-st.title("🍕 Expert Pizza Calculator")
-st.markdown("Bereken je recept voor Direct Deeg of Biga.")
+st.title("🍕 Pizza Expert Calculator")
+st.markdown("De ultieme tool voor Direct Deeg en Biga recepten.")
 
 # --- SIDEBAR: INPUTS ---
-st.sidebar.header("Instellingen")
+st.sidebar.header("📦 Basis Instellingen")
 aantal = st.sidebar.number_input("Aantal deegballen", min_value=1, value=6)
 gewicht = st.sidebar.number_input("Gewicht per bol (gram)", min_value=100, value=250)
 hydro_totaal = st.sidebar.slider("Hydratatie (%)", 50, 80, 65)
 zout_perc = st.sidebar.slider("Zout (%)", 1.0, 4.0, 2.5, 0.1)
-waste_perc = st.sidebar.number_input("Waste factor (%)", 0, 10, 3)
-oven_temp = st.sidebar.number_input("Oventemperatuur (°C)", 200, 500, 480)
+suiker_perc = st.sidebar.slider("Suiker (%)", 0.0, 3.0, 0.0, 0.5)
+olijfolie_perc = st.sidebar.slider("Olijfolie (%)", 0.0, 5.0, 0.0, 0.5)
+waste_perc = st.sidebar.number_input("Waste factor (% extra deeg)", 0, 10, 2)
+oven_temp = st.sidebar.number_input("Oventemperatuur (°C)", 150, 550, 480)
 
-methode = st.sidebar.radio("Methode", ["Direct Deeg", "Biga"])
+st.sidebar.header("🧪 Methode & Gist")
+methode = st.sidebar.radio("Kies Methode", ["Direct Deeg", "Biga"])
 gist_type = st.sidebar.radio("Gist Type", ["Instant (IDY)", "Vers"])
 
 # --- RIJS SCHEMA ---
-st.header("Rijs Schema")
+st.header("🕒 Planning & Temperatuur")
 col1, col2 = st.columns(2)
-
 with col1:
     temp_ct = st.number_input("Temp Koelkast (°C)", 2, 10, 4)
+with col2:
     temp_rt = st.number_input("Temp Kamer (°C)", 15, 30, 20)
 
 if methode == "Biga":
     biga_perc = st.slider("Biga Percentage (%)", 10, 100, 50)
-    st.subheader("Fase 1: Biga")
+    st.subheader("Fase 1: De Biga")
     tijd_biga_ct = st.number_input("Uren Biga in koelkast", 0, 72, 24)
-    tijd_biga_rt = st.number_input("Uren Biga op kamer", 0, 24, 0)
+    tijd_biga_rt = st.number_input("Uren Biga op kamer (Kickstart)", 0, 24, 1)
     
-    st.subheader("Fase 2: Hoofddeeg")
+    st.subheader("Fase 2: Na het mixen")
     tijd_deeg_ct = st.number_input("Uren deeg in koelkast", 0, 72, 18)
     tijd_deeg_rt = st.number_input("Uren deeg op kamer", 0, 24, 6)
     
     totale_tijd_ct = tijd_biga_ct + tijd_deeg_ct
     totale_tijd_rt = tijd_biga_rt + tijd_deeg_rt
 else:
+    st.subheader("Direct Deeg Planning")
     totale_tijd_ct = st.number_input("Totaal uren in koelkast", 0, 100, 24)
     totale_tijd_rt = st.number_input("Totaal uren op kamer", 0, 48, 6)
 
@@ -49,37 +53,70 @@ fi_totaal = (totale_tijd_ct * 2**((temp_ct - 20) / 7)) + (totale_tijd_rt * 2**((
 gist_perc_idy = (0.1 * 8) / fi_totaal
 actueel_gist_perc = gist_perc_idy * 3 if gist_type == "Vers" else gist_perc_idy
 
-bloem_totaal = totaal_gewicht / (1 + (hydro_totaal/100) + (zout_perc/100) + (actueel_gist_perc/100))
+bloem_totaal = totaal_gewicht / (1 + (hydro_totaal/100) + (zout_perc/100) + (suiker_perc/100) + (olijfolie_perc/100) + (actueel_gist_perc/100))
 water_totaal = bloem_totaal * (hydro_totaal/100)
 zout_totaal = bloem_totaal * (zout_perc/100)
+suiker_totaal = bloem_totaal * (suiker_perc/100)
+olijfolie_totaal = bloem_totaal * (olijfolie_perc/100)
 gist_totaal = bloem_totaal * (actueel_gist_perc/100)
 
 # --- OUTPUT ---
 st.divider()
-st.header("📋 Je Recept")
+st.header("📋 Jouw Recept")
 
-if oven_temp >= 450 and hydro_totaal < 65:
-    st.warning("⚠️ TIP: Verhoog hydratatie naar 67% voor een zachtere rand in een hete oven.")
+# Contextuele adviezen
+if oven_temp >= 450:
+    if hydro_totaal < 65:
+        st.warning("⚠️ **Hitte Advies:** Bij 450°C+ is 67-70% water aanbevolen om uitdroging te voorkomen.")
+    if suiker_perc > 0:
+        st.error("⚠️ **Suiker Waarschuwing:** Bij 450°C+ verbrandt suiker te snel. Laat suiker liever weg.")
+    if olijfolie_perc > 0:
+        st.warning("⚠️ **Olie Tip:** Olie kan gaan roken bij 450°C+. Wees zeer matig.")
+elif oven_temp < 300:
+    if hydro_totaal > 64:
+        st.warning("⚠️ **Bodem Tip:** Bij lage temp kan >64% water zorgen voor een zompige bodem.")
+    if suiker_perc == 0:
+        st.info("💡 **Bruining:** Voeg 1% suiker toe voor een mooiere kleur in een huishoudoven.")
 
+# Recept Weergave
+col_r1, col_r2 = st.columns(2)
 if methode == "Biga":
     bloem_biga = bloem_totaal * (biga_perc / 100)
     water_biga = bloem_biga * 0.45
-    
-    col_a, col_b = st.columns(2)
-    with col_a:
+    with col_r1:
         st.subheader("Stap 1: De Biga")
         st.write(f"**Bloem:** {bloem_biga:.0f}g")
-        st.write(f"**Water:** {water_biga:.0f}g")
-        st.write(f"**Gist:** {gist_totaal:.2f}g")
-    with col_b:
+        st.write(f"**Water:** {water_biga:.0f}g (45%)")
+        st.write(f"**Gist ({gist_type}):** {gist_totaal:.2f}g")
+    with col_r2:
         st.subheader("Stap 2: Hoofdmix")
         st.write(f"**Restant bloem:** {bloem_totaal - bloem_biga:.0f}g")
         st.write(f"**Extra water:** {water_totaal - water_biga:.0f}g")
         st.write(f"**Zout:** {zout_totaal:.1f}g")
+        if suiker_totaal > 0: st.write(f"**Suiker:** {suiker_totaal:.1f}g")
+        if olijfolie_totaal > 0: st.write(f"**Olijfolie:** {olijfolie_totaal:.1f}g")
 else:
-    st.write(f"**Bloem:** {bloem_totaal:.0f}g")
-    st.write(f"**Water:** {water_totaal:.0f}g")
-    st.write(f"**Zout:** {zout_totaal:.1f}g")
-    st.write(f"**Gist:** {gist_totaal:.2f}g")
+    with col_r1:
+        st.write(f"**Bloem:** {bloem_totaal:.0f}g")
+        st.write(f"**Water:** {water_totaal:.0f}g")
+        st.write(f"**Zout:** {zout_totaal:.1f}g")
+    with col_r2:
+        st.write(f"**Gist ({gist_type}):** {gist_totaal:.2f}g")
+        if suiker_totaal > 0: st.write(f"**Suiker:** {suiker_totaal:.1f}g")
+        if olijfolie_totaal > 0: st.write(f"**Olijfolie:** {olijfolie_totaal:.1f}g")
 
-st.info(f"Totaal deeg: {totaal_gewicht:.0f}g | Waste factor: {waste_perc}%")
+st.info(f"Totaal deeggewicht: {totaal_gewicht:.0f}g (incl. {waste_perc}% waste)")
+
+# EXPERT TIPS SECTIE
+with st.expander("🎓 Expert Tips voor dit Recept"):
+    st.write("**1. De Kickstart:**")
+    if methode == "Direct Deeg":
+        st.write("Laat het deeg na het kneden 1 uur op kamertemperatuur rusten. Dit geeft de gist een 'kickstart' voordat het de koelkast in gaat.")
+    else:
+        st.write("Laat de Biga (Stap 1) 1 tot 2 uur op kamertemperatuur staan voordat deze de koelkast in gaat. Na het mixen in Stap 2 kan het deeg direct koud staan.")
+    
+    st.write("**2. Windowpane Test:**")
+    st.write("Een lange fermentatie maakt het deeg elastisch. Test je deeg: je moet het zo dun kunnen uitrekken dat je er bijna doorheen kunt kijken zonder dat het scheurt.")
+    
+    st.write("**3. Biga Mengen:**")
+    st.write("Heeft je machine moeite met de Biga? Snijd de Biga in kleine stukjes en los deze eerst op in het water van Stap 2 voordat je de rest van de bloem toevoegt.")
