@@ -118,12 +118,10 @@ with st.expander("🎓 Expert-tips & Theorie"):
     st.write("De hoeveelheid water in je deeg is direct gekoppeld aan hoe heet je bakt:")
     st.write("- **Hete oven (450°C+):** Je bakt heel kort (60-90 sec). Een hoge hydratatie (65-70%) is nodig zodat de pizza niet uitdroogt.")
     st.write("- **Huishoudoven (max 300°C):** Je bakt langer (8-12 min). Een lagere hydratatie (max 62%) voorkomt dat je bodem slap of zompig blijft. Je pizza wordt iets krokanter.")
-
     st.divider()
     
     st.write("**2. De juiste bloem (Tipo 00):**")
     st.write("Voor deze calculator en de genoemde rijstijden is **Tipo 00 bloem** (met een hoog eiwitgehalte, min. 12g) vereist. Deze bloem is fijner gemalen en kan de grote hoeveelheid water en de lange fermentatie aan zonder dat het deeg slap wordt. Denk aan het merk Caputo.")
-
     st.divider()
     
     st.write("**3. Waarom Biga?**")
@@ -131,12 +129,10 @@ with st.expander("🎓 Expert-tips & Theorie"):
     st.write("- **Meer aroma:** Diepe, complexe smaken die je met een kort proces nooit haalt.")
     st.write("- **Superieure structuur:** Een veel luchtigere en krokantere rand (*cornicione*).")
     st.write("- **Verteerbaarheid:** De lange fermentatie breekt complexe zetmelen alvast af.")
-
     st.divider()
     
     st.write("**4. De ideale fermentatietijd:**")
     st.write("Hoewel je na 8 uur al een pizza kunt bakken, adviseren wij **minimaal 24 uur** (en idealiter 48 uur of langer) totale rijstijd. Tijd is een ingrediënt: het zorgt ervoor dat het deeg lichter op de maag ligt en de gluten optimaal ontspannen voor het stretchen.")
-
     st.divider()
     
     st.write("**5. De Kickstart:**")
@@ -144,12 +140,10 @@ with st.expander("🎓 Expert-tips & Theorie"):
         st.write("Laat het deeg na het kneden 1 uur op kamertemperatuur rusten. Dit geeft de gist een 'kickstart' voordat het de koelkast in gaat.")
     else:
         st.write("Laat de Biga (Stap 1) 1 tot 2 uur op kamertemperatuur staan voordat deze de koelkast in gaat. Na het mixen in Stap 2 kan het deeg direct koud staan.")
-
     st.divider()
     
     st.write("**6. Windowpane Test:**")
     st.write("Een lange fermentatie maakt het deeg elastisch en stretchbaar. Dat heb je nodig om het pizzadeeg goed te kunnen vormen. Je kunt je deeg testen: trek het zo dun uit dat je er bijna doorheen kunt kijken zonder dat het scheurt.")
-
     st.divider()
     
     if suiker_perc > 0:
