@@ -9,15 +9,15 @@ st.markdown("De ultieme tool voor direct deeg en biga-recepten. Scroll voor tips
 # EXPERTTIPS SECTIE
 with st.expander("🎓 Expert-tips & Theorie"):
     st.write("**1. Hydratatie vs. Oventemperatuur:**")
-    st.write("De hoeveelheid water in je deeg is direct gekoppeld aan hoe heet je bakt:")
+    st.write("De hoeveelheid water in je deeg (hydratatie, weergegeven in percentage van de bloem (100%)) is direct gekoppeld aan hoe heet je bakt:")
     st.write("- **Hete oven (450°C+):** Je bakt heel kort (60-90 sec). Een hoge hydratatie (65-70%) is nodig zodat de pizza niet uitdroogt.")
     st.write("- **Huishoudoven (max 300°C):** Je bakt langer (8-12 min). Een lagere hydratatie (max 62%) voorkomt dat je bodem slap of zompig blijft. Je pizza wordt iets krokanter.")
     st.divider()
         
     st.write("**2. Wat is direct deeg?**")
     st.write("Bij direct deeg meng je alle ingrediënten (bloem, water, gist en zout) in één keer. Dit is de basismethode en het meest eenvoudig.")
-    st.write("- **Voordeel:** Snel en minder handelingen.")
     st.write("- **Resultaat:** Een klassieke pizza met een egale structuur. De smaak komt hier vooral uit de lange rijs- of fermentatietijd in de koelkast.")
+    st.write("- **Tips voor het kneedproces:** Kneed eerst de bloem, het water en de gist. Als het deeg een egale consistentie heeft, voeg dan in de laatste minuten van het kneden de gist toe.")
     st.divider()
 
     st.write("**3. Wat is biga?**")
@@ -27,17 +27,22 @@ with st.expander("🎓 Expert-tips & Theorie"):
     st.write("- **Verteerbaarheid:** De enzymen hebben meer tijd om het zetmeel en de gluten af te breken.")
     st.divider()
     
-    st.write("**4. De juiste bloem (Tipo 00):**")
-    st.write("Voor deze calculator en de genoemde rijstijden is **Tipo 00 bloem** (met een hoog eiwitgehalte, min. 12g) vereist. Deze bloem is fijner gemalen en kan de grote hoeveelheid water en de lange fermentatie aan zonder dat het deeg slap wordt. Denk aan het merk Caputo.")
+    st.write("**4. De juiste bloem (Tipo 00 & W-waarde):**")
+    st.write("Voor een echte Napolitaanse pizza is **Tipo 00 bloem** vereist. Dit is de zuiverste maling voor een elastisch en stretchbaar deeg. Het kan bovendien meer water opnemen, zonder dat het plakkerig wordt.")
+    st.write("De **W-waarde** (bakkracht) bepaalt hoe lang je deeg kan rijpen/fermenteren:")
+    st.write("- **W260 - W300:** Ideaal voor rijstijden tussen de **24 en 48 uur**.")
+    st.write("- **W320 - W400:** Nodig voor extreem lange rijstijden (**72+ uur**) of een zeer hoge hydratatie (70%+).")
+    st.write("Een hogere W-waarde betekent een sterker 'skelet' dat de gassen langer kan vasthouden. Dit helpt met het bereiken van een luchtige korst.")
     st.divider()
     
     st.write("**5. De ideale fermentatietijd:**")
-    st.write("Hoewel je na 8 uur al een pizza kunt bakken, adviseren wij **minimaal 24 uur** (en idealiter 48 uur of langer) totale rijstijd. Tijd is een ingrediënt: het zorgt ervoor dat het deeg lichter op de maag ligt en de gluten optimaal ontspannen voor het stretchen.")
+    st.write("Hoewel je na 8 uur rijstijd al een pizza kunt bakken, adviseren wij **minimaal 24 uur** (en idealiter 48 uur of langer) totale rijstijd. Tijd is een ingrediënt: het zorgt ervoor dat het deeg lichter op de maag ligt en de gluten optimaal ontspannen voor het stretchen. Bij een korte rijstijd <24 uur, heb je meer kans dat het deeg scheurt.")
     st.divider()
     
     st.write("**6. De Kickstart:**")
     st.write("- **Direct Deeg:** Laat het deeg na het kneden 1 uur op kamertemperatuur rusten voordat het de koelkast in gaat.")
     st.write("- **Biga:** Laat de Biga (Stap 1) 1 tot 2 uur op kamertemperatuur staan. Na het mixen (Stap 2) kan het deeg direct de koelkast in.")
+    st.divider()
     
     st.write("**7. Windowpane Test:**")
     st.write("Een lange fermentatie maakt het deeg elastisch en stretchbaar. Dat heb je nodig om het pizzadeeg goed te kunnen vormen. Je kunt je deeg testen: trek het zo dun uit dat je er bijna doorheen kunt kijken zonder dat het scheurt.")
@@ -46,7 +51,7 @@ with st.expander("🎓 Expert-tips & Theorie"):
     st.write("**8. Suiker & Gist:**")
     st.write("Gebruik je suiker (aanbevolen onder 300°C)? Dit helpt vooral bij de kleuring. Het effect op de rijskracht is bij percentages onder de 3% verwaarloosbaar in relatie tot de invloed van tijd en temperatuur.")
 
-# --- SIDEBAR: INPUTS ---
+# --- INPUTS ---
 st.header("📦 Basisinstellingen")
 aantal = st.number_input("Aantal deegballen", min_value=1, value=6)
 gewicht = st.number_input("Gewicht per bol (gram)", min_value=100, value=250)
@@ -73,7 +78,7 @@ if methode == "Biga":
     biga_perc = st.slider("Biga Percentage (%)", 10, 100, 50)
     st.subheader("Fase 1: De Biga")
     tijd_biga_ct = st.number_input("Uren Biga in koelkast", 0, 72, 24)
-    tijd_biga_rt = st.number_input("Uren Biga op kamer (Kickstart)", 0, 24, 1)
+    tijd_biga_rt = st.number_input("Uren Biga op kamertemperatuur (Kickstart)", 0, 24, 1)
     
     st.subheader("Fase 2: Na het mixen")
     tijd_deeg_ct = st.number_input("Uren deeg in koelkast", 0, 72, 18)
@@ -84,7 +89,7 @@ if methode == "Biga":
 else:
     st.subheader("Planning direct deeg")
     totale_tijd_ct = st.number_input("Totaal uren in koelkast", 0, 100, 24)
-    totale_tijd_rt = st.number_input("Totaal uren op kamer", 0, 48, 6)
+    totale_tijd_rt = st.number_input("Totaal uren op kamertemperatuur", 0, 48, 6)
 totale_uren = totale_tijd_ct + totale_tijd_rt
 
 # --- REKENKERN ---
@@ -107,19 +112,19 @@ st.header("📋 Jouw Recept")
 
 # Actieve Waarschuwing voor korte rijstijd
 if totale_uren < 24:
-    st.error(f"⚠️ **Waarschuwing:** Je totale rijstijd is slechts {totale_uren} uur. Wij adviseren minimaal 24 uur voor optimale smaak en verteerbaarheid (zie Expert Tips).")
+    st.error(f"⚠️ **Waarschuwing:** Je totale rijstijd is slechts {totale_uren} uur. Wij adviseren minimaal 24 uur voor optimale smaak en verteerbaarheid (zie Expert-tips).")
     
 # Contextuele adviezen
 if oven_temp >= 450:
     if hydro_totaal < 65:
-        st.warning("⚠️ **Hitte Advies:** Bij 450°C+ is 67-70% water aanbevolen om uitdroging te voorkomen.")
+        st.warning("⚠️ **Hitte-advies:** Bij 450°C+ is 67-70% water aanbevolen om uitdroging te voorkomen.")
     if suiker_perc > 0:
-        st.error("⚠️ **Suiker Waarschuwing:** Bij 450°C+ verbrandt suiker te snel. Laat suiker liever weg.")
+        st.error("⚠️ **Suikerwaarschuwing:** Bij 450°C+ verbrandt suiker te snel. Laat suiker liever weg.")
     if olijfolie_perc > 0:
-        st.warning("⚠️ **Olie Tip:** Olie kan gaan roken bij 450°C+. Wees zeer matig en laat liever weg.")
+        st.warning("⚠️ **Olietip:** Olie kan gaan roken bij 450°C+. Wees zeer matig en laat liever weg.")
 elif oven_temp < 300:
     if hydro_totaal > 64:
-        st.warning("⚠️ **Bodem Tip:** Bij lage temp kan >64% water zorgen voor een zompige bodem.")
+        st.warning("⚠️ **Bodemtip:** Bij lage temp kan >64% water zorgen voor een zompige bodem.")
     if suiker_perc == 0:
         st.info("💡 **Bruining:** Voeg 1% suiker toe voor een mooiere kleur in een huishoudoven.")
 
