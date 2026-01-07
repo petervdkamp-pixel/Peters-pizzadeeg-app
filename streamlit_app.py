@@ -109,9 +109,9 @@ if totale_uren < 24:
     
 # Waarschuwing voor W-waarde op basis van tijd
 if totale_uren > 48:
-    st.warning(f"⚠️ **Bloem Advies:** Voor een totale rijstijd van {totale_uren} uur heb je een sterke bloem nodig (minimaal W320).")
+    st.warning(f"⚠️ **Bloemadvies:** Voor een totale rijstijd van {totale_uren} uur heb je een sterke bloem nodig (minimaal W320).")
 elif totale_uren >= 24:
-    st.info("💡 **Bloem Advies:** Voor deze rijstijd is een medium-sterke bloem (W260 - W300) ideaal.")
+    st.info("💡 **Bloemadvies:** Voor deze rijstijd is een medium-sterke bloem (W260 - W300) ideaal.")
     
 # Contextuele adviezen
 if oven_temp >= 450:
