@@ -162,53 +162,67 @@ else:
 
 st.info(f"Totaal deeggewicht: {totaal_gewicht:.0f}g (incl. {waste_perc}% waste)")
 
-# --- RECEPT TEKST OPBOUWEN ---
-if methode == "Biga":
-    recept_export = f"""🍕 JOUW PIZZA RECEPT (Biga Methode)
------------------------------------------
-Aantal bollen: {aantal} x {gewicht}g
-Hydratatie: {hydro_totaal}%
-Totale rijstijd: {totale_uren} uur
+import streamlit as st
+import pandas as pd
 
-STAP 1: DE BIGA (Voordeeg)
-• Bloem: {bloem_biga:.0f}g
-• Water: {water_biga:.0f}g
-• Gist: {gist_totaal:.2f}g (Direct in de biga)
+# --- CONFIGURATIE & CSS ---
+st.set_page_config(page_title="Peter's Pizza Calculator", layout="centered")
 
-STAP 2: HET HOOFDDEEG
-• Restant Bloem: {bloem_deeg:.0f}g
-• Restant Water: {water_deeg:.0f}g
-• Zout: {zout_totaal:.1f}g
-{f'• Suiker: {suiker_totaal:.1f}g' if suiker_totaal > 0 else ''}
-{f'• Olijfolie: {olijfolie_totaal:.1f}g' if olijfolie_totaal > 0 else ''}
+# Verberg Streamlit menu en reclame
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
-PLANNING:
-• Biga: {tijd_biga_ct}u koelkast / {tijd_biga_rt}u kamer
-• Deeg: {tijd_deeg_ct}u koelkast / {tijd_deeg_rt}u kamer
------------------------------------------
-Gemaakt met Peter's Pizza Calculator"""
-else:
-    recept_export = f"""🍕 JOUW PIZZA RECEPT (Direct Deeg)
------------------------------------------
-Aantal bollen: {aantal} x {gewicht}g
-Hydratatie: {hydro_totaal}%
-Totale rijstijd: {totale_uren} uur
+st.title("🍕 Peter's Pizza Calculator")
 
-INGREDIËNTEN:
-• Bloem: {bloem_totaal:.0f}g
-• Water: {water_totaal:.0f}g
-• Zout: {zout_totaal:.1f}g
-• Gist: {gist_totaal:.2f}g
-{f'• Suiker: {suiker_totaal:.1f}g' if suiker_totaal > 0 else ''}
-{f'• Olijfolie: {olijfolie_totaal:.1f}g' if olijfolie_totaal > 0 else ''}
+# --- 1. EXPERT TIPS (BOVENAAN) ---
+with st.expander("🎓 Expert Tips & Theorie (Lees dit eerst)"):
+    st.write("**1. Wat is Direct Deeg?**")
+    st.write("Je mengt alle ingrediënten in één keer. Eenvoudig en snel, met een klassiek resultaat.")
+    
+    st.divider()
+    
+    st.write("**2. Wat is Biga?**")
+    st.write("Een droog voordeeg dat 24 uur rijpt. Zorgt voor meer aroma en een veel luchtigere, krokantere rand (cornicione).")
+    
+    st.divider()
+    
+    st.write("**3. De Kickstart:**")
+    st.write("- **Direct Deeg:** 1 uur op kamertemperatuur laten staan voor de koelkast.")
+    st.write("- **Biga:** De Biga zelf 1-2 uur op kamer laten staan, daarna koelkast. Het einddeeg kan direct koud.")
+    
+    st.divider()
+    
+    st.write("**4. W-waarde & Tipo 00:**")
+    st.write("Gebruik **Tipo 00**. De W-waarde (bakkracht) bepaalt de duur:")
+    st.write("- **W260-W300:** Ideaal voor 24-48 uur.")
+    st.write("- **W320+:** Nodig voor 72+ uur of 70%+ hydratatie.")
+    
+    st.divider()
+    
+    st.write("**5. Hydratatie & Oven:**")
+    st.write("- **Pizza-oven (450°C):** Gebruik 65-70% hydratatie.")
+    st.write("- **Huishoudoven (250-300°C):** Gebruik max 62% tegen een zompige bodem.")
 
-PLANNING:
-• Koelkast: {totale_tijd_ct} uur
-• Kamertemperatuur: {totale_tijd_rt} uur
------------------------------------------
-Gemaakt met Peter's Pizza Calculator"""
+# --- 2. BASIS INSTELLINGEN ---
+st.header("📦 Basis Instellingen")
+col1, col2 = st.columns(2)
 
-# De kopieerknop
-if st.button("📋 Kopieer recept naar klembord"):
-    st.copy_to_clipboard(recept_export)
-    st.toast("Recept gekopieerd! Plak het in WhatsApp of Mail.")
+with col1:
+    aantal = st.number_input("Aantal deegballen", 1, 100, 6)
+    gewicht = st.number_input("Gewicht per bol (gram)", 100, 500, 250)
+    methode = st.radio("Methode", ["Direct Deeg", "Biga"])
+
+with col2:
+    hydro_totaal = st.slider("Hydratatie (%)", 50, 80, 65)
+    zout_perc = st.slider("Zout (%)", 1.0, 4.0, 2.5, 0.1)
+    if zout_perc < 2.2:
+        st.caption("⚠️ *Laag zoutgehalte beïnvloedt de structuur en kleur.*")
+    gist_type = st.selectbox("Type Gist", ["Instant gist", "Verse gist"])
+
+with st.expander("Extra opt
