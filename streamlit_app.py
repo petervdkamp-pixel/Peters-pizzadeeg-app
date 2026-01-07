@@ -45,6 +45,7 @@ else:
     st.subheader("Planning direct deeg")
     totale_tijd_ct = st.number_input("Totaal uren in koelkast", 0, 100, 24)
     totale_tijd_rt = st.number_input("Totaal uren op kamer", 0, 48, 6)
+    totale_uren = totale_tijd_ct + totale_tijd_rt
 
 # --- REKENKERN ---
 verlies_factor = 1 + (waste_perc / 100)
@@ -64,6 +65,10 @@ gist_totaal = bloem_totaal * (actueel_gist_perc/100)
 st.divider()
 st.header("📋 Jouw Recept")
 
+# Actieve Waarschuwing voor korte rijstijd
+if totale_uren < 24:
+    st.error(f"⚠️ **Waarschuwing:** Je totale rijstijd is slechts {totale_uren} uur. Wij adviseren minimaal 24 uur voor optimale smaak en verteerbaarheid (zie Expert Tips).")
+    
 # Contextuele adviezen
 if oven_temp >= 450:
     if hydro_totaal < 65:
@@ -116,8 +121,8 @@ with st.expander("🎓 Expert Tips & Theorie"):
     st.write("- **Verteerbaarheid:** De lange fermentatie breekt complexe zetmelen alvast af.")
 
     st.write("**2. De ideale fermentatietijd:**")
-    st.write("Hoewel je na 8 uur al een pizza kunt bakken, adviseren wij **minimaal 24 uur** (en idealiter 48 uur) totale rijstijd. Tijd is een ingrediënt: het zorgt ervoor dat het deeg lichter op de maag ligt en de gluten optimaal ontspannen voor het stretchen.")
-
+    st.write("Hoewel je na 8 uur al een pizza kunt bakken, adviseren wij **minimaal 24 uur** (en idealiter 48 uur of langer) totale rijstijd. Tijd is een ingrediënt: het zorgt ervoor dat het deeg lichter op de maag ligt en de gluten optimaal ontspannen voor het stretchen.")
+    
     st.write("**3. De Kickstart:**")
     if methode == "Direct Deeg":
         st.write("Laat het deeg na het kneden 1 uur op kamertemperatuur rusten. Dit geeft de gist een 'kickstart' voordat het de koelkast in gaat.")
