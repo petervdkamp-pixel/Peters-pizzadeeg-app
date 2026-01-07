@@ -162,3 +162,40 @@ else:
 
 st.info(f"Totaal deeggewicht: {totaal_gewicht:.0f}g (incl. {waste_perc}% waste)")
 
+# --- KOPIEERBLOK ONDERAAN ---
+st.divider()
+st.subheader("📲 Recept kopiëren")
+
+# We stellen de tekst samen op basis van de gekozen methode
+if methode == "Biga":
+    export_tekst = f"""🍕 PIZZA RECEPT (BIGA)
+-------------------------
+STAP 1 (Biga):
+• Bloem: {bloem_biga:.0f}g
+• Water: {water_biga:.0f}g
+• Gist: {gist_totaal:.2f}g
+
+STAP 2 (Deeg):
+• Restant Bloem: {bloem_deeg:.0f}g
+• Restant Water: {water_deeg:.0f}g
+• Zout: {zout_totaal:.1f}g
+{f'• Olijfolie: {olijfolie_totaal:.1f}g' if olijfolie_totaal > 0 else ''}
+
+Planning: {totale_uren}u totaal
+-------------------------"""
+else:
+    export_tekst = f"""🍕 PIZZA RECEPT (DIRECT)
+-------------------------
+• Bloem: {bloem_totaal:.0f}g
+• Water: {water_totaal:.0f}g
+• Zout: {zout_totaal:.1f}g
+• Gist: {gist_totaal:.2f}g
+{f'• Olijfolie: {olijfolie_totaal:.1f}g' if olijfolie_totaal > 0 else ''}
+
+Planning: {totale_uren}u totaal
+-------------------------"""
+
+# Dit blokje zorgt voor de tekst met de kopieerknop rechtsboven
+st.code(export_tekst, language="text")
+st.caption("Klik op het icoontje rechtsboven in het grijze vak om te kopiëren voor WhatsApp of Mail.")
+
