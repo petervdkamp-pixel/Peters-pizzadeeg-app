@@ -43,6 +43,11 @@ with st.expander("🎓 Expert-tips & Theorie"):
     st.divider()
     st.write("**8. Suiker & Gist:**")
     st.write("Gebruik je suiker (aanbevolen onder 300°C)? Dit helpt vooral bij de kleuring. Het effect op de rijskracht is bij percentages onder de 3% verwaarloosbaar in relatie tot de invloed van tijd en temperatuur.")
+    st.write("**8. Deegtemperatuur & Techniek:**")
+    st.write("- **Eindtemperatuur:** Probeer je deeg na het kneden rond de **23°C** te krijgen. Is je keuken warm? Gebruik dan ijswater.")
+    st.write("- **Bulkfermentatie:** Het makkelijkste is om deeg in bulk (als één geheel in een afgesloten bak) in de koelkast te laten fermenteren/rijpen. Haal dit er een halfuurtje voor het opbollen uit.")
+    st.write("- **Opbollen:** Maak je bollen 4-6 uur voor het bakken en laat ze dan op kamertemperatuur komen in een afgesloten bak (anders drogen ze uit). Zo heeft het glutennetwerk tijd om te ontspannen, wat het stretchen makkelijker maakt.")
+    st.write("- **Stretchen:** Stretchen is de techniek waarbij je een deegbol met de hand uitduwt tot een ronde pizzabodem. Werk altijd met deeg op kamertemperatuur. Koud deeg is te stug en zal scheuren.")
 
 # --- INPUTS ---
 st.header("📦 Basisinstellingen")
