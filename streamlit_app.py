@@ -89,12 +89,12 @@ if methode == "Biga":
     bloem_biga = bloem_totaal * (biga_perc / 100)
     water_biga = bloem_biga * 0.45
     with col_r1:
-        st.subheader("Stap 1: De Biga")
+        st.subheader("Stap 1: De Biga (voordeeg)")
         st.write(f"**Bloem:** {bloem_biga:.0f}g")
         st.write(f"**Water:** {water_biga:.0f}g (45%)")
         st.write(f"**Gist ({gist_type}):** {gist_totaal:.2f}g")
     with col_r2:
-        st.subheader("Stap 2: Hoofdmix")
+        st.subheader("Stap 2: Hoofddeeg-mix")
         st.write(f"**Restant bloem:** {bloem_totaal - bloem_biga:.0f}g")
         st.write(f"**Extra water:** {water_totaal - water_biga:.0f}g")
         st.write(f"**Zout:** {zout_totaal:.1f}g")
