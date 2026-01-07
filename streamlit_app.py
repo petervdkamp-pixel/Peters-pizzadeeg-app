@@ -45,7 +45,7 @@ else:
     st.subheader("Planning direct deeg")
     totale_tijd_ct = st.number_input("Totaal uren in koelkast", 0, 100, 24)
     totale_tijd_rt = st.number_input("Totaal uren op kamer", 0, 48, 6)
-    totale_uren = totale_tijd_ct + totale_tijd_rt
+totale_uren = totale_tijd_ct + totale_tijd_rt
 
 # --- REKENKERN ---
 verlies_factor = 1 + (waste_perc / 100)
