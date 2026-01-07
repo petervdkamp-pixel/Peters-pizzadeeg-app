@@ -7,7 +7,7 @@ st.title("🍕 Pizza-expert calculator")
 st.markdown("De ultieme tool voor direct deeg en biga-recepten. Scroll voor tips eerst omlaag voor expert-tips.")
 
 # --- SIDEBAR: INPUTS ---
-st.header("📦 Basis Instellingen")
+st.header("📦 Basisinstellingen")
 aantal = st.number_input("Aantal deegballen", min_value=1, value=6)
 gewicht = st.number_input("Gewicht per bol (gram)", min_value=100, value=250)
 hydro_totaal = st.slider("Hydratatie (%)", 50, 80, 65)
