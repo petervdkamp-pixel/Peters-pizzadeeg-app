@@ -1,11 +1,5 @@
 import streamlit as st
-import streamlit_analytics  # Voeg deze import toe
 
-# Zorg dat dit helemaal bovenaan staat, vlak na de imports
-    with streamlit_analytics.track():
-    st.title("🍕 Pizzaformule.nl")  
-    # --- HIER STAAT DE REST VAN JE BESTAANDE CODE ---
-    # Alles wat ingesprongen (met een tab) onder 'with' staat, wordt gevolgd.
 # --- CONFIGURATIE ---
     st.set_page_config(page_title="Pizzaformule.nl dé pizzacalculator met alle denkbare variabelen voor de ultieme pizza", page_icon="🍕", layout="centered")
 
