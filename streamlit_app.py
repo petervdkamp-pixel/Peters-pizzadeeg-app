@@ -58,9 +58,12 @@ hydro_totaal = st.slider("Hydratatie (%)", 50, 80, 67,
 help="De hoeveelheid water t.o.v. de bloem. 60-65% is makkelijk hanteerbaar. >70% is voor gevorderden en vereist sterke bloem. Zie ook de Expert-tips voor meer informatie over de relatie tussen hydratatie en baktemperatuur.")
 zout_perc = st.slider("Zout (%)", 1.0, 4.0, 2.5, 0.1,
 help="Zout geeft smaak en verstevigt de gluten. Gebruikelijk is 2.5% tot 3% van het bloemgewicht.")
-suiker_perc = st.slider("Suiker (%)", 0.0, 3.0, 0.0, 0.5)
-olijfolie_perc = st.slider("Olijfolie (%)", 0.0, 5.0, 0.0, 0.5)
-waste_perc = st.number_input("Waste factor (% extra deeg)", 0, 10, 2)
+suiker_perc = st.slider("Suiker (%)", 0.0, 3.0, 0.0, 0.5),
+help="Suiker helpt bij de kleuring van de korst, vooral in ovens die niet warmer worden dan 300°C.")
+olijfolie_perc = st.slider("Olijfolie (%)", 0.0, 5.0, 0.0, 0.5,
+help="Olie maakt het deeg soepeler en de korst krokanter bij lagere temperaturen (huishoudoven). Gebruik geen olie bij hogere temperaturen.")
+waste_perc = st.number_input("Waste factor (% extra deeg)", 0, 10, 2),
+help="Extra marge voor deeg dat achterblijft in de kom of aan de handen. 2% is meestal voldoende.")
 oven_temp = st.number_input("Oventemperatuur (°C)", 150, 550, 480)
 
 st.header("🧪 Methode & Gist")
@@ -79,8 +82,10 @@ with col2:
 if methode == "Biga":
     biga_perc = st.slider("Biga Percentage (%)", 10, 100, 50)
     st.subheader("Fase 1: De Biga")
-    tijd_biga_ct = st.number_input("Uren Biga in koelkast", 0, 72, 24)
-    tijd_biga_rt = st.number_input("Uren Biga op kamertemperatuur (Kickstart)", 0, 24, 1)
+    tijd_biga_ct = st.number_input("Uren Biga in koelkast", 0, 72, 24),
+    help="De tijd dat de Biga koud rijpt om enzymatische processen (smaak) te stimuleren. Advies: 24 uur.")
+    tijd_biga_rt = st.number_input("Uren Biga op kamertemperatuur (Kickstart)", 0, 24, 1),
+    help="Om het gist een kickstart te geven kun je het deeg op kamertemperatuur laten staan, voordat je het in de koelkast doet. Advies: 1 uur.")
     
     st.subheader("Fase 2: Na het mixen")
     tijd_deeg_ct = st.number_input("Uren deeg in koelkast", 0, 72, 18)
