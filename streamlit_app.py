@@ -195,7 +195,7 @@ else:
         if suiker_totaal > 0: st.write(f"• **Suiker:** {suiker_totaal:.1f}g")
         if olijfolie_totaal > 0: st.write(f"• **Olijfolie:** {olijfolie_totaal:.1f}g")
 
-st.info(f"Totaal deeggewicht: {totaal_gewicht:.0f}g (incl. {waste_perc}% waste)")
+st.info(f"Totaal deeggewicht: {totale_massa:.0f}g (incl. {waste_perc}% waste)")
 
 # --- UITKLAPBAAR KOPIEERBLOK ONDERAAN ---
 with st.expander("📲 Klik hier om het recept eenvoudig te kopiëren naar bijv. Whatsapp of een notitieblok"):
