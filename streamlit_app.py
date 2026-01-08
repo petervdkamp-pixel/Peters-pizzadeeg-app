@@ -9,7 +9,7 @@ st.markdown("De ultieme tool voor direct deeg en biga-recepten, volgens de (neo-
 # EXPERTTIPS SECTIE
 with st.expander("🎓 Expert-tips & Theorie"):
     st.write("**🍕 De Napolitaanse Pizza**")
-    st.write("De traditionele basis bestaat uit slechts **4 ingrediënten**: bloem (Tipo 00), water, zout en gist. "
+    st.write("Een Napolitaanse pizza is de wereldberoemde klassieker uit Napels, herkenbaar aan een zeer luchtige, soepele rand en een dunne, zachte bodem. De traditionele basis bestaat uit slechts 4 ingrediënten: bloem (Tipo 00), water, zout en gist. "
         "Er wordt *geen* olie of suiker toegevoegd. Het deeg rijpt lang en wordt kort (60-90 sec) "
         "op extreem hoge temperatuur (450°C+) gebakken voor de kenmerkende luchtige, gevlekte rand.")
     st.write("Bij temperaturen onder de 350°C (zoals in een reguliere huishoud-oven) duurt het bakken langer (5-8 min). "
