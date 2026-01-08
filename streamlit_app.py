@@ -12,6 +12,9 @@ with st.expander("🎓 Expert-tips & Theorie"):
     st.write("De traditionele basis bestaat uit slechts **4 ingrediënten**: bloem (Tipo 00), water, zout en gist. "
         "Er wordt *geen* olie of suiker toegevoegd. Het deeg rijpt lang en wordt kort (60-90 sec) "
         "op extreem hoge temperatuur (450°C+) gebakken voor de kenmerkende luchtige, gevlekte rand.")
+    st.write("Bij temperaturen onder de 350°C (zoals in een keukenoven) duurt het bakken langer (5-8 min). "
+        "Voeg dan **olijfolie** toe voor een minder taaie korst en **suiker** om de bruining te versnellen. "
+        "Zonder deze toevoegingen droogt het deeg uit voordat het mooi gekleurd is.")
     st.divider()
     st.write("**1. Hydratatie vs. Oventemperatuur:**")
     st.write("De hoeveelheid water in je deeg (hydratatie, weergegeven in percentage van de bloem (100%)) is direct gekoppeld aan hoe heet je bakt:")
