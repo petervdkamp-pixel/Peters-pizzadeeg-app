@@ -111,48 +111,51 @@ else:
     totale_tijd_rt = st.number_input("Totaal uren op kamertemperatuur", 0, 48, 6)
 totale_uren = totale_tijd_ct + totale_tijd_rt
 
-# --- 4. REKENKERN ---
-massa_per_bol = gewicht * (1 + waste_perc/100)
-totale_massa = aantal * massa_per_bol
+# --- 4. REKENKERN (VOLLEDIG HERSTELD & GEKALIBREERD) ---
 
-# Berekening bloem (basis = 100%)
-factor = 1 + (hydro_totaal/100) + (zout_perc/100) + (olijfolie_perc/100) + (suiker_perc/100)
-bloem_totaal = totale_massa / factor
+# 1. Bereken de totale deegmassa inclusief waste
+massa_per_bol_app = gewicht * (1 + waste_perc/100)
+totale_massa_app = aantal * massa_per_bol_app
 
+# 2. Bereken de bloemhoeveelheid (de 100% basis)
+# We tellen alle percentages bij elkaar op om de deelfactor te vinden
+factor_app = 1 + (hydro_totaal/100) + (zout_perc/100) + (olijfolie_perc/100) + (suiker_perc/100)
+bloem_totaal = totale_massa_app / factor_app
+
+# 3. Bereken de overige ingrediënten op basis van de bloem
 water_totaal = bloem_totaal * (hydro_totaal/100)
 zout_totaal = bloem_totaal * (zout_perc/100)
 olijfolie_totaal = bloem_totaal * (olijfolie_perc/100)
 suiker_totaal = bloem_totaal * (suiker_perc/100)
 
-# --- VERBETERDE GIST BEREKENING (Tijd + Temperatuur) ---
+# 4. DE GIST-REKENING (Gekalibreerd op 2.5g bij 42u rijs)
+uren_totaal_app = totale_tijd_ct + totale_tijd_rt
 
-# 1. Gemiddelde temperatuur berekenen over de hele periode
-tijd_totaal = totale_tijd_ct + totale_tijd_rt
-if tijd_totaal > 0:
-    temp_gemiddeld = ((totale_tijd_ct * temp_ct) + (totale_tijd_rt * temp_rt)) / tijd_totaal
+if uren_totaal_app > 0:
+    # Berekening van de gemiddelde temperatuur (gewogen gemiddelde)
+    t_gem_app = ((totale_tijd_ct * temp_ct) + (totale_tijd_rt * temp_rt)) / uren_totaal_app
+    
+    # BASIS FORMULE:
+    # Factor 0.07 is de startwaarde voor 24u bij 20 graden.
+    # (1.135 ** -(t_gem_app - 20)) zorgt voor de sterke vertraging in de koelkast.
+    diff_temp_app = t_gem_app - 20
+    gist_percentage_app = (0.07 / (uren_totaal_app / 24)) * (1.135 ** -diff_temp_app)
+    
+    # Veiligheidsmarges voor Instant Dry Yeast (IDY)
+    if gist_percentage_app < 0.04: gist_percentage_app = 0.04
+    if gist_percentage_app > 1.0: gist_percentage_app = 1.0
+    
+    # Vermenigvuldiger voor verse gist (indien geselecteerd)
+    if gist_type == "Vers":
+        gist_percentage_app *= 3
+        
+    # Eindresultaat in grammen
+    gist_totaal = (bloem_totaal / 100) * gist_percentage_app
 else:
-    temp_gemiddeld = temp_rt
+    gist_totaal = 0
 
-# 2. De Gistformule (Finetuning voor jouw 2,5g resultaat)
-# We verlagen de basis_factor naar 0.07
-basis_factor = 0.07 
-
-# We verhogen de exponent naar 1.13. 
-# Hierdoor wordt de gist in de koelkast nóg meer afgeremd in de berekening.
-temp_diff = temp_gemiddeld - 20
-gist_factor = (basis_factor / (tijd_totaal / 24)) * (1.13 ** -temp_diff)
-
-# 3. Veiligheidsmarges (voor Instant Dry Yeast)
-if gist_factor < 0.04: gist_factor = 0.04 
-if gist_factor > 1.0: gist_factor = 1.0
-
-# 4. Correctie voor gist-type (Vers = 3x IDY)
-if gist_type == "Vers":
-    gist_factor *= 3
-
-gist_totaal = (bloem_totaal / 100) * gist_factor
-# -------------------------------------------
-# -------------------------------------------
+# Zorg dat de variabele voor de info-box ook klopt
+totale_massa = totale_massa_app
 
 # --- OUTPUT ---
 st.divider()
