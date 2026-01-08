@@ -101,14 +101,16 @@ if methode == "Biga":
     
     st.subheader("Fase 2: Na het kneden (alle ingrediënten)")
     tijd_deeg_ct = st.number_input("Uren deeg in koelkast", 0, 72, 18)
-    tijd_deeg_rt = st.number_input("Uren deeg op kamertemperatuur", 0, 24, 6)
+    tijd_deeg_rt = st.number_input("Uren deeg op kamertemperatuur", 0, 24, 6,
+    help="Voordat je het deeg kunt stretchen, is het belangrijk dat het deeg op kamertemperatuur is gekomen. Hanteer bij een kamertemperatuur van 20-20°C een rusttijd van 6 uur, van 18-19°C een rusttijd van 7-8 uur.")
     
     totale_tijd_ct = tijd_biga_ct + tijd_deeg_ct
     totale_tijd_rt = tijd_biga_rt + tijd_deeg_rt
 else:
     st.subheader("Planning direct deeg")
     totale_tijd_ct = st.number_input("Totaal uren in koelkast", 0, 100, 24)
-    totale_tijd_rt = st.number_input("Totaal uren op kamertemperatuur", 0, 48, 6)
+    totale_tijd_rt = st.number_input("Totaal uren op kamertemperatuur", 0, 48, 6,
+    help="Voordat je het deeg kunt stretchen, is het belangrijk dat het deeg op kamertemperatuur is gekomen. Hanteer bij een kamertemperatuur van 20-20°C een rusttijd van 6 uur, van 18-19°C een rusttijd van 7-8 uur.")
 totale_uren = totale_tijd_ct + totale_tijd_rt
 
 # --- 4. REKENKERN (DEFINITIEVE KALIBRATIE) ---
