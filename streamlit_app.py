@@ -1,7 +1,7 @@
 import streamlit as st
 
 # --- CONFIGURATIE ---
-st.set_page_config(page_title="Pizza-expert calculator", page_icon="🍕", layout="centered")
+st.set_page_config(page_title="Pizzaformule.nl dé pizzacalculator met alle denkbare variabelen voor de ultieme pizza", page_icon="🍕", layout="centered")
 
 st.title("🍕 Pizza-expert calculator")
 st.markdown("De ultieme tool voor direct deeg en biga-recepten, volgens de (neo-)Napolitaanse traditie. Lees voor meer informatie eerst de Expert-tips & Theorie.")
