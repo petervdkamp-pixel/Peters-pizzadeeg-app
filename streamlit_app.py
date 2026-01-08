@@ -139,12 +139,13 @@ if methode == "Biga":
     bloem_biga = bloem_totaal * (biga_perc / 100)
     water_biga = bloem_biga * 0.45
     with col_r1:
-        st.subheader("Stap 1: De Biga (voordeeg)")
+        st.subheader("Stap 1: De biga (voordeeg)")
         st.write(f"**Bloem:** {bloem_biga:.0f}g")
         st.write(f"**Water:** {water_biga:.0f}g (45%)")
         st.write(f"**Gist ({gist_type}):** {gist_totaal:.2f}g")
     with col_r2:
-        st.subheader("Stap 2: Hoofddeeg-mix (totaal)")
+        st.subheader("Stap 2: Het deeg (totaal)")
+        st.write(f"**De biga uit stap 1, na fermentatie/rijping**")
         st.write(f"**Restant bloem:** {bloem_totaal - bloem_biga:.0f}g")
         st.write(f"**Extra water:** {water_totaal - water_biga:.0f}g")
         st.write(f"**Zout:** {zout_totaal:.1f}g")
@@ -185,7 +186,7 @@ STAP 1 (De biga):
 • Planning: {tijd_biga_ct}u koelkast / {tijd_biga_rt}u kamer
 
 STAP 2 (Het deeg):
-• De biga (na fermentatie/rijping)
+• De biga (uit stap 1 na fermentatie/rijping)
 • Restant Bloem: {b_rest:.0f}g
 • Restant Water: {w_rest:.0f}g
 • Zout: {zout_totaal:.1f}g
