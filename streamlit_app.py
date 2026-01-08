@@ -112,19 +112,32 @@ else:
     totale_tijd_rt = st.number_input("Totaal uren op kamertemperatuur", 0, 48, 6)
 totale_uren = totale_tijd_ct + totale_tijd_rt
 
-# --- REKENKERN ---
-verlies_factor = 1 + (waste_perc / 100)
-totaal_gewicht = aantal * gewicht * verlies_factor
-fi_totaal = (totale_tijd_ct * 2**((temp_ct - 20) / 7)) + (totale_tijd_rt * 2**((temp_rt - 20) / 7))
-gist_perc_idy = (0.1 * 8) / fi_totaal
-actueel_gist_perc = gist_perc_idy * 3 if gist_type == "Vers" else gist_perc_idy
+# --- 4. REKENKERN ---
+massa_per_bol = gewicht * (1 + waste_perc/100)
+totale_massa = aantal * massa_per_bol
 
-bloem_totaal = totaal_gewicht / (1 + (hydro_totaal/100) + (zout_perc/100) + (suiker_perc/100) + (olijfolie_perc/100) + (actueel_gist_perc/100))
+# Berekening bloem (basis = 100%)
+factor = 1 + (hydro_totaal/100) + (zout_perc/100) + (olijfolie_perc/100) + (suiker_perc/100)
+bloem_totaal = totale_massa / factor
+
 water_totaal = bloem_totaal * (hydro_totaal/100)
 zout_totaal = bloem_totaal * (zout_perc/100)
-suiker_totaal = bloem_totaal * (suiker_perc/100)
 olijfolie_totaal = bloem_totaal * (olijfolie_perc/100)
-gist_totaal = bloem_totaal * (actueel_gist_perc/100)
+suiker_totaal = bloem_totaal * (suiker_perc/100)
+
+# --- HIER KOMT DE NIEUWE GIST BEREKENING ---
+# Verbeterde gistberekening (houdt rekening met koelkast-vertraging)
+gist_factor = 0.15 / (totale_uren / 24) if totale_uren > 0 else 0.5
+
+# Veiligheidsmarge: Gist mag voor IDY niet te laag zakken voor een goede rijs
+if gist_factor < 0.12: 
+    gist_factor = 0.12
+
+if gist_type == "Verse gist": 
+    gist_factor *= 3
+
+gist_totaal = (bloem_totaal / 100) * gist_factor
+# -------------------------------------------
 
 # --- OUTPUT ---
 st.divider()
