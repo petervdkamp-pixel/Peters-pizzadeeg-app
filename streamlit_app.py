@@ -111,50 +111,48 @@ else:
     totale_tijd_rt = st.number_input("Totaal uren op kamertemperatuur", 0, 48, 6)
 totale_uren = totale_tijd_ct + totale_tijd_rt
 
-# --- 4. REKENKERN (VOLLEDIG HERSTELD & GEKALIBREERD) ---
+# --- 4. REKENKERN (DEFINITIEVE KALIBRATIE) ---
 
-# 1. Bereken de totale deegmassa inclusief waste
+# 1. Deegmassa bepalen
 massa_per_bol_app = gewicht * (1 + waste_perc/100)
 totale_massa_app = aantal * massa_per_bol_app
 
-# 2. Bereken de bloemhoeveelheid (de 100% basis)
-# We tellen alle percentages bij elkaar op om de deelfactor te vinden
+# 2. Bloem (100% basis)
 factor_app = 1 + (hydro_totaal/100) + (zout_perc/100) + (olijfolie_perc/100) + (suiker_perc/100)
 bloem_totaal = totale_massa_app / factor_app
 
-# 3. Bereken de overige ingrediënten op basis van de bloem
+# 3. Overige ingrediënten
 water_totaal = bloem_totaal * (hydro_totaal/100)
 zout_totaal = bloem_totaal * (zout_perc/100)
 olijfolie_totaal = bloem_totaal * (olijfolie_perc/100)
 suiker_totaal = bloem_totaal * (suiker_perc/100)
 
-# 4. DE GIST-REKENING (Gekalibreerd op 2.5g bij 42u rijs)
+# 4. GIST-REKENING (Gekalibreerd op basis van jouw 2.5g succes-recept)
 uren_totaal_app = totale_tijd_ct + totale_tijd_rt
 
 if uren_totaal_app > 0:
-    # Berekening van de gemiddelde temperatuur (gewogen gemiddelde)
+    # Gemiddelde temperatuur
     t_gem_app = ((totale_tijd_ct * temp_ct) + (totale_tijd_rt * temp_rt)) / uren_totaal_app
     
-    # BASIS FORMULE:
-    # Factor 0.07 is de startwaarde voor 24u bij 20 graden.
-    # (1.135 ** -(t_gem_app - 20)) zorgt voor de sterke vertraging in de koelkast.
+    # KALIBRATIE: 
+    # De basis_factor is verlaagd naar 0.055.
+    # De exponent is 1.12. 
+    # Bij 36u/4°C en 6u/20°C geeft dit voor ~1685g bloem nu exact ~2.5g gist.
     diff_temp_app = t_gem_app - 20
-    gist_percentage_app = (0.07 / (uren_totaal_app / 24)) * (1.135 ** -diff_temp_app)
+    gist_percentage_app = (0.055 / (uren_totaal_app / 24)) * (1.12 ** -diff_temp_app)
     
-    # Veiligheidsmarges voor Instant Dry Yeast (IDY)
+    # Veiligheidsmarges
     if gist_percentage_app < 0.04: gist_percentage_app = 0.04
     if gist_percentage_app > 1.0: gist_percentage_app = 1.0
     
-    # Vermenigvuldiger voor verse gist (indien geselecteerd)
     if gist_type == "Vers":
         gist_percentage_app *= 3
         
-    # Eindresultaat in grammen
     gist_totaal = (bloem_totaal / 100) * gist_percentage_app
 else:
     gist_totaal = 0
 
-# Zorg dat de variabele voor de info-box ook klopt
+# Variabele herstellen voor de rest van het script
 totale_massa = totale_massa_app
 
 # --- OUTPUT ---
