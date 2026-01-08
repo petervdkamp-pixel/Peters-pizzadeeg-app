@@ -46,6 +46,7 @@ with st.expander("🎓 Expert-tips & Theorie"):
     st.write("- **Bulkfermentatie:** Het makkelijkste is om deeg in bulk (als één geheel in een afgesloten bak) in de koelkast te laten fermenteren/rijpen. Haal dit er een halfuurtje voor het opbollen uit.")
     st.write("- **Opbollen:** Maak je bollen 4-6 uur voor het bakken en laat ze dan op kamertemperatuur komen in een afgesloten bak (anders drogen ze uit). Zo heeft het glutennetwerk tijd om te ontspannen, wat het stretchen makkelijker maakt.")
     st.write("- **Stretchen:** Stretchen is de techniek waarbij je een deegbol met de hand uitduwt tot een ronde pizzabodem. Werk altijd met deeg op kamertemperatuur. Koud deeg is te stug en zal scheuren.")
+    st.write("- **Waste:** Tijdens het proces van deeg maken, blijft er altijd wel iets aan je handen of de kom plakken. Om te voorkomen dat je minder deeg hebt voor je bollen dan de bedoeling, kun je hiervoor corrigeren. Hanteer tussen de 1 en 3% waste.")
 
 # --- INPUTS ---
 st.header("📦 Basisinstellingen")
