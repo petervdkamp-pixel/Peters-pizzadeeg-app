@@ -132,7 +132,7 @@ gist_factor = 0.15 / (totale_uren / 24) if totale_uren > 0 else 0.5
 if gist_factor < 0.12: 
     gist_factor = 0.12
 
-if gist_type == "Verse gist": 
+if gist_type == "Vers": 
     gist_factor *= 3
 
 gist_totaal = (bloem_totaal / 100) * gist_factor
@@ -201,7 +201,7 @@ with st.expander("📲 Klik hier om het recept eenvoudig te kopiëren naar bijv.
     
     # We berekenen de waarden hier ter plekke zodat de tekst altijd klopt
     if methode == "Biga":
-        b_biga = bloem_totaal * 0.5
+        b_biga = bloem_totaal * (biga_perc / 100)
         w_biga = b_biga * 0.45
         b_rest = bloem_totaal - b_biga
         w_rest = water_totaal - w_biga
