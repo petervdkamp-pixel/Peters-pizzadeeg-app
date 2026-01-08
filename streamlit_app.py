@@ -82,9 +82,9 @@ with col2:
 if methode == "Biga":
     biga_perc = st.slider("Biga Percentage (%)", 10, 100, 50)
     st.subheader("Fase 1: De Biga")
-    tijd_biga_ct = st.number_input("Uren Biga in koelkast", 0, 72, 24),
+    tijd_biga_ct = st.number_input("Uren Biga in koelkast", 0, 72, 24,
     help="De tijd dat de Biga koud rijpt om enzymatische processen (smaak) te stimuleren. Advies: 24 uur.")
-    tijd_biga_rt = st.number_input("Uren Biga op kamertemperatuur (Kickstart)", 0, 24, 1),
+    tijd_biga_rt = st.number_input("Uren Biga op kamertemperatuur (Kickstart)", 0, 24, 1,
     help="Om het gist een kickstart te geven kun je het deeg op kamertemperatuur laten staan, voordat je het in de koelkast doet. Advies: 1 uur.")
     
     st.subheader("Fase 2: Na het mixen")
