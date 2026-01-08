@@ -53,7 +53,6 @@ st.header("📦 Basisinstellingen")
 aantal = st.number_input("Aantal deegballen", min_value=1, value=6)
 gewicht = st.number_input("Gewicht per bol (gram)", min_value=100, value=250)
 help="Hanteer voor een pizza van 30cm tussen de 250 en 280 gram."
-    )
 hydro_totaal = st.slider("Hydratatie (%)", 50, 80, 67)
 zout_perc = st.slider("Zout (%)", 1.0, 4.0, 2.5, 0.1)
 suiker_perc = st.slider("Suiker (%)", 0.0, 3.0, 0.0, 0.5)
