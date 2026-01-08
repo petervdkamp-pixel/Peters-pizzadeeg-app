@@ -7,10 +7,10 @@ import streamlit_analytics  # Voeg deze import toe
     # --- HIER STAAT DE REST VAN JE BESTAANDE CODE ---
     # Alles wat ingesprongen (met een tab) onder 'with' staat, wordt gevolgd.
 # --- CONFIGURATIE ---
-st.set_page_config(page_title="Pizzaformule.nl dé pizzacalculator met alle denkbare variabelen voor de ultieme pizza", page_icon="🍕", layout="centered")
+    st.set_page_config(page_title="Pizzaformule.nl dé pizzacalculator met alle denkbare variabelen voor de ultieme pizza", page_icon="🍕", layout="centered")
 
-st.title("🍕 Pizzaformule.nl")
-st.markdown("De ultieme tool met alle denkbare variabelen voor direct deeg en biga-recepten, volgens de (neo-)Napolitaanse traditie. Lees voor meer informatie eerst de Expert-tips & Theorie.")
+    st.title("🍕 Pizzaformule.nl")
+    st.markdown("De ultieme tool met alle denkbare variabelen voor direct deeg en biga-recepten, volgens de (neo-)Napolitaanse traditie. Lees voor meer informatie eerst de Expert-tips & Theorie.")
 
 # EXPERTTIPS SECTIE
 with st.expander("🎓 Expert-tips & Theorie"):
