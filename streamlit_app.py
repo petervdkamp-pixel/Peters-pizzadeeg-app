@@ -53,9 +53,11 @@ st.header("📦 Basisinstellingen")
 aantal = st.number_input("Aantal deegballen", min_value=1, value=6,
 help="Voer hier het totaal aantal pizza's in dat je wilt gaan bakken.")
 gewicht = st.number_input("Gewicht per bol (gram)", min_value=100, value=250,
-help="Hanteer voor een pizza van 30cm tussen de 250 en 280 gram.")
-hydro_totaal = st.slider("Hydratatie (%)", 50, 80, 67)
-zout_perc = st.slider("Zout (%)", 1.0, 4.0, 2.5, 0.1)
+help="Een standaard Napolitaanse pizza is 250-280 gram. Voor een kleine pizza (20-25cm) gebruik je 200 gram.")
+hydro_totaal = st.slider("Hydratatie (%)", 50, 80, 67,
+help="De hoeveelheid water t.o.v. de bloem. 60-65% is makkelijk hanteerbaar. >70% is voor gevorderden en vereist sterke bloem. Zie ook de Expert-tips voor meer informatie over de relatie tussen hydratatie en baktemperatuur.")
+zout_perc = st.slider("Zout (%)", 1.0, 4.0, 2.5, 0.1,
+help="Zout geeft smaak en verstevigt de gluten. Gebruikelijk is 2.5% tot 3% van het bloemgewicht.")
 suiker_perc = st.slider("Suiker (%)", 0.0, 3.0, 0.0, 0.5)
 olijfolie_perc = st.slider("Olijfolie (%)", 0.0, 5.0, 0.0, 0.5)
 waste_perc = st.number_input("Waste factor (% extra deeg)", 0, 10, 2)
@@ -63,7 +65,8 @@ oven_temp = st.number_input("Oventemperatuur (°C)", 150, 550, 480)
 
 st.header("🧪 Methode & Gist")
 methode = st.radio("Kies Methode", ["Direct deeg", "Biga"])
-gist_type = st.radio("Type gist", ["Instant (IDY)", "Vers"])
+gist_type = st.radio("Type gist", ["Instant (IDY)", "Vers"],
+help="Instant gist zijn de droge korrels. Verse gist is het blokje uit de koeling (gebruik hier 3x zoveel van).")
 
 # --- RIJSSCHEMA ---
 st.header("🕒 Planning & Temperatuur")
