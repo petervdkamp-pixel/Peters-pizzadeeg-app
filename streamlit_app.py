@@ -92,7 +92,7 @@ with col2:
 if methode == "Biga":
     biga_perc = st.slider("Biga Percentage (%)", 10, 100, 50,
     help="Dit is het deel van de totale bloem dat in de Biga gaat. \n\n"
-         "• 30-50%: Ideaal voor een gebalanceerde smaak en goede hanteerbaarheid. De meeste keukenmachines kunnen 50% biga wel aan, mits je het in blokjes snijdt of oplost in het water van stap 2. \n"
+         "• 30-50%: Ideaal voor een gebalanceerde smaak en goede hanteerbaarheid. De meeste keukenmachines kunnen 50% biga wel aan, mits je het in blokjes snijdt of oplost in het water van stap 2."
          "• 100% (Full Biga): Zorgt voor maximale luchtigheid en aroma, maar is lastiger te kneden in stap 2.")
     st.subheader("Fase 1: De Biga")
     tijd_biga_ct = st.number_input("Uren Biga in koelkast", 0, 72, 24,
