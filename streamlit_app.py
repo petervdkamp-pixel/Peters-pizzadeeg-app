@@ -126,31 +126,32 @@ suiker_totaal = bloem_totaal * (suiker_perc/100)
 
 # --- VERBETERDE GIST BEREKENING (Tijd + Temperatuur) ---
 
-# 1. Gemiddelde temperatuur berekenen
+# 1. Gemiddelde temperatuur berekenen over de hele periode
 tijd_totaal = totale_tijd_ct + totale_tijd_rt
 if tijd_totaal > 0:
-    # Weegt de uren in de koelkast en op kamertemperatuur
     temp_gemiddeld = ((totale_tijd_ct * temp_ct) + (totale_tijd_rt * temp_rt)) / tijd_totaal
 else:
     temp_gemiddeld = temp_rt
 
-# 2. De Gistformule
-# We gebruiken 0.15 als sterke basis bij 24u op 20°C gemiddeld.
-basis_factor = 0.15
-# temp_diff: warmer dan 20 graden = minder gist, kouder = meer gist
+# 2. De Gistformule (Gecorrigeerd voor realistische fermentatie)
+# Deze factor (0.09) icm de exponent zorgt voor de juiste balans
+basis_factor = 0.09
 temp_diff = temp_gemiddeld - 20
-# De factor 0.9 zorgt voor een logaritmische afname van gist bij stijgende temp
-gist_factor = (basis_factor / (tijd_totaal / 24)) * (0.9 ** temp_diff)
 
-# 3. Veiligheidsmarges (IDY basis)
-if gist_factor < 0.08: gist_factor = 0.08 # Ondergrens voor stabiliteit
-if gist_factor > 1.2: gist_factor = 1.2   # Bovengrens om 'overproofing' te voorkomen
+# We gebruiken de Van 't Hoff-gebaseerde correctie (1.1 ** -temp_diff)
+# Dit zorgt ervoor dat bij koude temperaturen de gist-hoeveelheid logisch toeneemt
+gist_factor = (basis_factor / (tijd_totaal / 24)) * (1.11 ** -temp_diff)
 
-# 4. Correctie voor gist-type
+# 3. Veiligheidsmarges (voor Instant Dry Yeast)
+if gist_factor < 0.04: gist_factor = 0.04 
+if gist_factor > 1.2: gist_factor = 1.2
+
+# 4. Correctie voor gist-type (Vers = 3x IDY)
 if gist_type == "Vers":
     gist_factor *= 3
 
 gist_totaal = (bloem_totaal / 100) * gist_factor
+# -------------------------------------------
 # -------------------------------------------
 
 # --- OUTPUT ---
