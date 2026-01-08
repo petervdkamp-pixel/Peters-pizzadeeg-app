@@ -4,7 +4,7 @@ import streamlit as st
 st.set_page_config(page_title="Pizza-expert calculator", page_icon="🍕", layout="centered")
 
 st.title("🍕 Pizza-expert calculator")
-st.markdown("De ultieme tool voor direct deeg en biga-recepten. Scroll voor tips eerst omlaag voor expert-tips.")
+st.markdown("De ultieme tool voor direct deeg en biga-recepten, volgens de (neo-)Napolitaanse traditie. Lees voor meer informatie eerst de expert-tips en theorie.")
 
 # EXPERTTIPS SECTIE
 with st.expander("🎓 Expert-tips & Theorie"):
@@ -38,14 +38,11 @@ with st.expander("🎓 Expert-tips & Theorie"):
     st.write("- **Direct Deeg:** Laat het deeg na het kneden 1 uur op kamertemperatuur rusten voordat het de koelkast in gaat. Dit zorgt ervoor dat het gist geactiveerd wordt.")
     st.write("- **Biga:** Laat de Biga (Stap 1) 1 tot 2 uur op kamertemperatuur staan. Na het mixen (Stap 2) kan het deeg direct de koelkast in.")
     st.divider()
-    st.write("**7. Windowpane Test:**")
-    st.write("Een lange fermentatie maakt het deeg elastisch en stretchbaar. Dat heb je nodig om het pizzadeeg goed te kunnen vormen. Je kunt je deeg testen: trek het zo dun uit dat je er bijna doorheen kunt kijken zonder dat het scheurt.")
+    st.write("**7. Suiker & Gist:**")
+    st.write("Gebruik je suiker (aanbevolen onder 300°C)? Dit helpt vooral bij de kleuring. Het effect op de rijskracht is bij suikerpercentages onder de 3% verwaarloosbaar in relatie tot de invloed van tijd en temperatuur.")
     st.divider()
-    st.write("**8. Suiker & Gist:**")
-    st.write("Gebruik je suiker (aanbevolen onder 300°C)? Dit helpt vooral bij de kleuring. Het effect op de rijskracht is bij percentages onder de 3% verwaarloosbaar in relatie tot de invloed van tijd en temperatuur.")
-    st.divider()
-    st.write("**9. Deegtemperatuur & Techniek:**")
-    st.write("- **Eindtemperatuur:** Probeer je deeg na het kneden rond de **23°C** te krijgen. Is je keuken warm? Gebruik dan ijswater.")
+    st.write("**8. Deegtemperatuur & Techniek:**")
+    st.write("- **Eindtemperatuur:** Probeer je deeg na het kneden rond de **23°C** te krijgen. Als je keuken kouder is, dan zorgt de wrijving van je keukenmachine met het deeg voor temperatuurstijging. Is je keuken warm? Probeer dan ijswater, of laat een deel van je water bestaan uit ijsklontjes.")
     st.write("- **Bulkfermentatie:** Het makkelijkste is om deeg in bulk (als één geheel in een afgesloten bak) in de koelkast te laten fermenteren/rijpen. Haal dit er een halfuurtje voor het opbollen uit.")
     st.write("- **Opbollen:** Maak je bollen 4-6 uur voor het bakken en laat ze dan op kamertemperatuur komen in een afgesloten bak (anders drogen ze uit). Zo heeft het glutennetwerk tijd om te ontspannen, wat het stretchen makkelijker maakt.")
     st.write("- **Stretchen:** Stretchen is de techniek waarbij je een deegbol met de hand uitduwt tot een ronde pizzabodem. Werk altijd met deeg op kamertemperatuur. Koud deeg is te stug en zal scheuren.")
