@@ -178,7 +178,7 @@ Aantal: {aantal} bollen van {gewicht}g
 Hydratatie: {hydro_totaal}%
 Totaal rijstijd: {totale_uren} uur
 
-STAP 1 (De Biga):
+STAP 1 (De biga):
 • Bloem: {b_biga:.0f}g
 • Water: {w_biga:.0f}g
 • Gist: {gist_totaal:.2f}g (Alles)
