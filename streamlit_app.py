@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(page_title="Pizzaformule.nl dé pizzacalculator met alle denkbare variabelen voor de ultieme pizza", page_icon="🍕", layout="centered")
 
 st.title("🍕 Pizzaformule.nl")
-st.markdown("De ultieme tool met alle denkbare variabelen voor direct deeg en biga-recepten, volgens de (neo-)Napolitaanse traditie.")
+st.markdown("De ultieme tool met alle denkbare variabelen voor direct deeg en biga-recepten, volgens de (neo-)Napolitaanse traditie. Onze calculator gebruikt een biologisch model (Van 't Hoff) om de gistkracht aan te passen op basis van de gemiddelde temperatuur van je koelkast en keuken.")
 
 # EXPERTTIPS SECTIE
 with st.expander("🎓 Expert-tips & Theorie"):
