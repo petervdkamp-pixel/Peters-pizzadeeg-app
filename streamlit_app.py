@@ -4,7 +4,7 @@ import streamlit as st
 st.set_page_config(page_title="Pizzaformule.nl dé pizzacalculator met alle denkbare variabelen voor de ultieme pizza", page_icon="🍕", layout="centered")
 
 st.title("🍕 Pizzaformule.nl")
-st.markdown("De ultieme tool met alle denkbare variabelen voor direct deeg en biga-recepten...")
+st.markdown("De ultieme tool met alle denkbare variabelen voor direct deeg en biga-recepten, volgens de (neo-)Napolitaanse traditie.")
 
 # EXPERTTIPS SECTIE
 with st.expander("🎓 Expert-tips & Theorie"):
