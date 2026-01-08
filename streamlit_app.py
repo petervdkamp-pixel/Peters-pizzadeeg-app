@@ -67,13 +67,13 @@ help="De hoeveelheid water t.o.v. de bloem. 60-65% is makkelijk hanteerbaar. >70
 zout_perc = st.slider("Zout (%)", 1.0, 4.0, 2.5, 0.1,
 help="Zout geeft smaak en verstevigt de gluten. Gebruikelijk is 2.5% tot 3% van het bloemgewicht.")
 suiker_perc = st.slider("Suiker (%)", 0.0, 3.0, 0.0, 0.5,
-help="Suiker helpt bij de kleuring van de korst, vooral in ovens die niet warmer worden dan 300°C. Advies is om het niet te gebruiken bij temperaturen >300°C.")
+help="Suiker helpt bij de kleuring van de korst, vooral in ovens die niet warmer worden dan 300°C. Advies is om het sowieso niet te gebruiken bij temperaturen >400°C.")
 olijfolie_perc = st.slider("Olijfolie (%)", 0.0, 5.0, 0.0, 0.5,
-help="Olie maakt het deeg soepeler en de korst krokanter bij lagere temperaturen (huishoudoven). Gebruik geen olie bij hogere baktemperaturen.")
+help="Olie maakt het deeg soepeler en de korst krokanter bij lagere temperaturen (huishoudoven). Gebruik geen olie bij bij temperaturen >400°C.")
 waste_perc = st.number_input("Waste factor (% extra deeg)", 0, 10, 2,
 help="Extra marge voor deeg dat achterblijft in de kom of aan de handen. 2% is meestal voldoende.")
 oven_temp = st.number_input("Oventemperatuur (°C)", 150, 550, 480,
-help="Heb je een huishoud-oven? Hanteer een zo hoog mogelijke temperatuur. Heb je een pizza-oven? Bak je pizza tussen de 450 en 500 graden.")
+help="Heb je een huishoud-oven? Hanteer een zo hoog mogelijke temperatuur. De meeste huishoud-ovens hebben een maximale temperatuur van 300°C. Heb je een pizza-oven? Bak je pizza tussen de 450 en 500 graden.")
 
 st.header("🧪 Methode & Gist")
 methode = st.radio("Kies Methode", ["Direct deeg", "Biga"],
@@ -154,13 +154,13 @@ elif totale_uren >= 24:
     st.info("💡 **Bloemadvies:** Voor deze rijstijd is een medium-sterke bloem (W260 - W300) ideaal.")
     
 # Contextuele adviezen
-if oven_temp >= 450:
+if oven_temp >= 400:
     if hydro_totaal < 65:
-        st.warning("⚠️ **Hitte-advies:** Bij 450°C+ is 67-70% water aanbevolen om uitdroging te voorkomen.")
+        st.warning("⚠️ **Hitte-advies:** Bij 400°C+ is 67-70% water aanbevolen om uitdroging te voorkomen.")
     if suiker_perc > 0:
-        st.error("⚠️ **Suikerwaarschuwing:** Bij 450°C+ verbrandt suiker te snel. Laat suiker liever weg.")
+        st.error("⚠️ **Suikerwaarschuwing:** Bij 400°C+ verbrandt suiker te snel. Laat suiker liever weg.")
     if olijfolie_perc > 0:
-        st.warning("⚠️ **Olietip:** Olie kan gaan roken bij 450°C+. Wees zeer matig en laat liever weg.")
+        st.warning("⚠️ **Olietip:** Olie kan gaan roken bij 400°C+. Wees zeer matig en laat liever weg.")
 elif oven_temp < 300:
     if hydro_totaal > 64:
         st.warning("⚠️ **Bodemtip:** Bij lage temp kan >64% water zorgen voor een zompige bodem.")
