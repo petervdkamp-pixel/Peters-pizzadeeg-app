@@ -72,7 +72,8 @@ olijfolie_perc = st.slider("Olijfolie (%)", 0.0, 5.0, 0.0, 0.5,
 help="Olie maakt het deeg soepeler en de korst krokanter bij lagere temperaturen (huishoudoven). Gebruik geen olie bij hogere baktemperaturen.")
 waste_perc = st.number_input("Waste factor (% extra deeg)", 0, 10, 2,
 help="Extra marge voor deeg dat achterblijft in de kom of aan de handen. 2% is meestal voldoende.")
-oven_temp = st.number_input("Oventemperatuur (°C)", 150, 550, 480)
+oven_temp = st.number_input("Oventemperatuur (°C)", 150, 550, 480,
+help="Heb je een huishoud-oven? Hanteer een zo hoog mogelijke temperatuur. Heb je een pizza-oven? Bak je pizza tussen de 450 en 500 graden.")
 
 st.header("🧪 Methode & Gist")
 methode = st.radio("Kies Methode", ["Direct deeg", "Biga"],
