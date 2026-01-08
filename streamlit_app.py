@@ -50,7 +50,8 @@ with st.expander("🎓 Expert-tips & Theorie"):
 
 # --- INPUTS ---
 st.header("📦 Basisinstellingen")
-aantal = st.number_input("Aantal deegballen", min_value=1, value=6)
+aantal = st.number_input("Aantal deegballen", min_value=1, value=6),
+help="Voer hier het totaal aantal pizza's in dat je wilt gaan bakken.")
 gewicht = st.number_input("Gewicht per bol (gram)", min_value=100, value=250,
 help="Hanteer voor een pizza van 30cm tussen de 250 en 280 gram.")
 hydro_totaal = st.slider("Hydratatie (%)", 50, 80, 67)
