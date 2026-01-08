@@ -4,7 +4,7 @@ import streamlit as st
 st.set_page_config(page_title="Pizza-expert calculator", page_icon="🍕", layout="centered")
 
 st.title("🍕 Pizza-expert calculator")
-st.markdown("De ultieme tool voor direct deeg en biga-recepten, volgens de (neo-)Napolitaanse traditie. Lees voor meer informatie eerst de expert-tips en theorie.")
+st.markdown("De ultieme tool voor direct deeg en biga-recepten, volgens de (neo-)Napolitaanse traditie. Lees voor meer informatie eerst de Expert-tips & Theorie.")
 
 # EXPERTTIPS SECTIE
 with st.expander("🎓 Expert-tips & Theorie"):
