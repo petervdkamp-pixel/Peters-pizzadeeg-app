@@ -184,14 +184,15 @@ STAP 1 (De Biga):
 • Gist: {gist_totaal:.2f}g (Alles)
 • Planning: {tijd_biga_ct}u koelkast / {tijd_biga_rt}u kamer
 
-STAP 2 (Het Deeg):
+STAP 2 (Het deeg):
+• De biga (na fermentatie/rijping)
 • Restant Bloem: {b_rest:.0f}g
 • Restant Water: {w_rest:.0f}g
 • Zout: {zout_totaal:.1f}g
 • Planning: {tijd_deeg_ct}u koelkast / {tijd_deeg_rt}u kamer
 -----------------------------------------"""
     else:
-        export_tekst = f"""🍕 PIZZA RECEPT (DIRECT)
+        export_tekst = f"""🍕 PIZZA RECEPT (DIRECT DEEG)
 -----------------------------------------
 Aantal: {aantal} bollen van {gewicht}g
 Hydratatie: {hydro_totaal}%
