@@ -1,5 +1,4 @@
 import streamlit as st
-# De import van analytics is weg, dus de code moet weer naar links
 
 st.set_page_config(page_title="Pizzaformule.nl dé pizzacalculator met alle denkbare variabelen voor de ultieme pizza", page_icon="🍕", layout="centered")
 
