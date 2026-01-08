@@ -99,7 +99,7 @@ if methode == "Biga":
     tijd_biga_rt = st.number_input("Uren Biga op kamertemperatuur (Kickstart)", 0, 24, 1,
     help="Om het gist een kickstart te geven kun je het deeg op kamertemperatuur laten staan, voordat je het in de koelkast doet. Advies: 1 uur.")
     
-    st.subheader("Fase 2: Na het mixen")
+    st.subheader("Fase 2: Na het kneden (alle ingrediënten)")
     tijd_deeg_ct = st.number_input("Uren deeg in koelkast", 0, 72, 18)
     tijd_deeg_rt = st.number_input("Uren deeg op kamertemperatuur", 0, 24, 6)
     
