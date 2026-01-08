@@ -140,26 +140,26 @@ if methode == "Biga":
     water_biga = bloem_biga * 0.45
     with col_r1:
         st.subheader("Stap 1: De biga (voordeeg)")
-        st.write(f"**Bloem:** {bloem_biga:.0f}g")
-        st.write(f"**Water:** {water_biga:.0f}g (45%)")
-        st.write(f"**Gist ({gist_type}):** {gist_totaal:.2f}g")
+        st.write(f"• **Bloem:** {bloem_biga:.0f}g")
+        st.write(f"• **Water:** {water_biga:.0f}g (45%)")
+        st.write(f"• **Gist ({gist_type}):** {gist_totaal:.2f}g")
     with col_r2:
         st.subheader("Stap 2: Het deeg (totaal)")
-        st.write(f"**De biga uit stap 1, na fermentatie/rijping**")
-        st.write(f"**Restant bloem:** {bloem_totaal - bloem_biga:.0f}g")
-        st.write(f"**Extra water:** {water_totaal - water_biga:.0f}g")
-        st.write(f"**Zout:** {zout_totaal:.1f}g")
-        if suiker_totaal > 0: st.write(f"**Suiker:** {suiker_totaal:.1f}g")
-        if olijfolie_totaal > 0: st.write(f"**Olijfolie:** {olijfolie_totaal:.1f}g")
+        st.write(f"• **De biga uit stap 1, na fermentatie/rijping**")
+        st.write(f"• **Restant bloem:** {bloem_totaal - bloem_biga:.0f}g")
+        st.write(f"• **Extra water:** {water_totaal - water_biga:.0f}g")
+        st.write(f"• **Zout:** {zout_totaal:.1f}g")
+        if suiker_totaal > 0: st.write(f"• **Suiker:** {suiker_totaal:.1f}g")
+        if olijfolie_totaal > 0: st.write(f"• **Olijfolie:** {olijfolie_totaal:.1f}g")
 else:
     with col_r1:
-        st.write(f"**Bloem:** {bloem_totaal:.0f}g")
-        st.write(f"**Water:** {water_totaal:.0f}g")
-        st.write(f"**Zout:** {zout_totaal:.1f}g")
+        st.write(f"• **Bloem:** {bloem_totaal:.0f}g")
+        st.write(f"• **Water:** {water_totaal:.0f}g")
+        st.write(f"• **Zout:** {zout_totaal:.1f}g")
     with col_r2:
-        st.write(f"**Gist ({gist_type}):** {gist_totaal:.2f}g")
-        if suiker_totaal > 0: st.write(f"**Suiker:** {suiker_totaal:.1f}g")
-        if olijfolie_totaal > 0: st.write(f"**Olijfolie:** {olijfolie_totaal:.1f}g")
+        st.write(f"• **Gist ({gist_type}):** {gist_totaal:.2f}g")
+        if suiker_totaal > 0: st.write(f"• **Suiker:** {suiker_totaal:.1f}g")
+        if olijfolie_totaal > 0: st.write(f"• **Olijfolie:** {olijfolie_totaal:.1f}g")
 
 st.info(f"Totaal deeggewicht: {totaal_gewicht:.0f}g (incl. {waste_perc}% waste)")
 
