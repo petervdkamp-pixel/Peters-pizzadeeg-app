@@ -133,18 +133,18 @@ if tijd_totaal > 0:
 else:
     temp_gemiddeld = temp_rt
 
-# 2. De Gistformule (Gecorrigeerd voor realistische fermentatie)
-# Deze factor (0.09) icm de exponent zorgt voor de juiste balans
-basis_factor = 0.09
-temp_diff = temp_gemiddeld - 20
+# 2. De Gistformule (Finetuning voor jouw 2,5g resultaat)
+# We verlagen de basis_factor naar 0.07
+basis_factor = 0.07 
 
-# We gebruiken de Van 't Hoff-gebaseerde correctie (1.1 ** -temp_diff)
-# Dit zorgt ervoor dat bij koude temperaturen de gist-hoeveelheid logisch toeneemt
-gist_factor = (basis_factor / (tijd_totaal / 24)) * (1.11 ** -temp_diff)
+# We verhogen de exponent naar 1.13. 
+# Hierdoor wordt de gist in de koelkast nóg meer afgeremd in de berekening.
+temp_diff = temp_gemiddeld - 20
+gist_factor = (basis_factor / (tijd_totaal / 24)) * (1.13 ** -temp_diff)
 
 # 3. Veiligheidsmarges (voor Instant Dry Yeast)
 if gist_factor < 0.04: gist_factor = 0.04 
-if gist_factor > 1.2: gist_factor = 1.2
+if gist_factor > 1.0: gist_factor = 1.0
 
 # 4. Correctie voor gist-type (Vers = 3x IDY)
 if gist_type == "Vers":
