@@ -62,7 +62,7 @@ suiker_perc = st.slider("Suiker (%)", 0.0, 3.0, 0.0, 0.5,
 help="Suiker helpt bij de kleuring van de korst, vooral in ovens die niet warmer worden dan 300°C.")
 olijfolie_perc = st.slider("Olijfolie (%)", 0.0, 5.0, 0.0, 0.5,
 help="Olie maakt het deeg soepeler en de korst krokanter bij lagere temperaturen (huishoudoven). Gebruik geen olie bij hogere temperaturen.")
-waste_perc = st.number_input("Waste factor (% extra deeg)", 0, 10, 2),
+waste_perc = st.number_input("Waste factor (% extra deeg)", 0, 10, 2,
 help="Extra marge voor deeg dat achterblijft in de kom of aan de handen. 2% is meestal voldoende.")
 oven_temp = st.number_input("Oventemperatuur (°C)", 150, 550, 480)
 
