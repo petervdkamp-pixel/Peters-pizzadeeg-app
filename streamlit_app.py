@@ -124,15 +124,30 @@ zout_totaal = bloem_totaal * (zout_perc/100)
 olijfolie_totaal = bloem_totaal * (olijfolie_perc/100)
 suiker_totaal = bloem_totaal * (suiker_perc/100)
 
-# --- HIER KOMT DE NIEUWE GIST BEREKENING ---
-# Verbeterde gistberekening (houdt rekening met koelkast-vertraging)
-gist_factor = 0.15 / (totale_uren / 24) if totale_uren > 0 else 0.5
+# --- VERBETERDE GIST BEREKENING (Tijd + Temperatuur) ---
 
-# Veiligheidsmarge: Gist mag voor IDY niet te laag zakken voor een goede rijs
-if gist_factor < 0.12: 
-    gist_factor = 0.12
+# 1. Gemiddelde temperatuur berekenen
+tijd_totaal = totale_tijd_ct + totale_tijd_rt
+if tijd_totaal > 0:
+    # Weegt de uren in de koelkast en op kamertemperatuur
+    temp_gemiddeld = ((totale_tijd_ct * temp_ct) + (totale_tijd_rt * temp_rt)) / tijd_totaal
+else:
+    temp_gemiddeld = temp_rt
 
-if gist_type == "Vers": 
+# 2. De Gistformule
+# We gebruiken 0.15 als sterke basis bij 24u op 20°C gemiddeld.
+basis_factor = 0.15
+# temp_diff: warmer dan 20 graden = minder gist, kouder = meer gist
+temp_diff = temp_gemiddeld - 20
+# De factor 0.9 zorgt voor een logaritmische afname van gist bij stijgende temp
+gist_factor = (basis_factor / (tijd_totaal / 24)) * (0.9 ** temp_diff)
+
+# 3. Veiligheidsmarges (IDY basis)
+if gist_factor < 0.08: gist_factor = 0.08 # Ondergrens voor stabiliteit
+if gist_factor > 1.2: gist_factor = 1.2   # Bovengrens om 'overproofing' te voorkomen
+
+# 4. Correctie voor gist-type
+if gist_type == "Vers":
     gist_factor *= 3
 
 gist_totaal = (bloem_totaal / 100) * gist_factor
